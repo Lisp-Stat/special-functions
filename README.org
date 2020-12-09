@@ -1,0 +1,125 @@
+* Special Functions
+
+  This library implements numerical special functions in common
+  lisp with a focus on high accuracy with double-float.
+
+* Installation
+
+  Until the project is in Quicklisp, you'll need clone the repository
+  into your =~/common-lisp/= directory and then use quicklisp to load
+  it, like so =(ql:quickload "special-functions")=.
+
+* Usage
+
+  We would like these functions to operate as much like ANSI Common
+  Lisp functions as possible. This means doing the 'right thing' when
+  presented with complex arguments and large numbers. However most
+  sources assume only the double-float domain, and not the complex
+  domain.
+
+* The API
+
+  ** Special Functions
+
+   | function     | source |
+   |--------------+--------|
+   | erf          | libm   |
+   | erfc         | libm   |
+   | inverse-erf  | Boost  |
+   | inverse-erfc | Boost  |
+
+
+   ** Accuracy
+
+   The following table shows the peak and mean errors using Boost test
+   data. Tests run on MS Windows 10 with SBCL 2.0.10. Boost results
+   taken from the Boost [[https://www.boost.org/doc/libs/1_69_0/libs/math/doc/html/math_toolkit/sf_erf/error_function.html][error function]] and [[https://www.boost.org/doc/libs/1_68_0/libs/math/doc/html/math_toolkit/sf_erf/error_inv.html][inverse error function]]
+   pages.
+
+   *** Error rates for erf
+
+   | Data Set          | Boost (MS C++)                | Special-Functions                |
+   |-------------------+-------------------------------+----------------------------------|
+   | erf small values  | Max = 0.841ε (Mean = 0.0687ε) | Max = 6.10e-5ε (Mean = 4.58e-7ε) |
+   | erf medium values | Max = 1ε     (Mean = 0.119ε)  | Max = 1ε       (Mean = 0.003ε    |
+   | erf large values  | Max = 0ε     (Mean = 0ε)      |     N/A erf range 0 < x < 6      |
+
+   *** Error rates for erfc
+
+   | Data Set           | Boost (MS C++)                | Special-Functions                  |
+   |--------------------+-------------------------------+------------------------------------|
+   | erfc small values  | Max = 0ε (Mean = 0)           | Max = 1ε        (Mean = 0.00667ε)  |
+   | erfc medium values | Max = 1.65ε (Mean = 0.373ε)   | Max = 1.71ε     (Mean = 0.182ε     |
+   | erfc large values  | Max = 1.14ε (Mean = 0.248ε)   | Max = 2.31e-15ε (Mean = 8.86e-18ε) |
+
+   *** Error rates for inverse-erf/c
+
+   | Data Set     | Boost (MS C++)              | Special-Functions        |
+   |--------------+-----------------------------+--------------------------+
+   | inverse-erf  | Max = 1.09ε (Mean = 0.502ε) | Max = 2ε (Mean = 0.434ε) |
+   | inverse-erfc | Max = 1ε    (Mean = 0.491ε) | Max = 2ε (Mean = 0.425ε) |
+
+
+   ** NaN and Infinity
+
+   The lisp specification mentions neither NaN nor infinity, so any
+   proper treatment of these is going to be either implementation
+   specific or using a third party library.
+
+   We are using the [[https://github.com/Shinmera/float-features][float-features]] library. It works well, but doesn't
+   support NaN. At some point we need to rationalize infinity and NaN
+   throughout Common Lisp Statistics. There is some support for
+   infinity in the extended-reals package of num-utils, as well as in
+   OCT, but neither is comprehensive. Openlibm and Cephes have
+   definitions, but we don't want to introduce a large dependency just
+   to get these definitions.
+
+
+* Tests
+
+  The test data is based on Boost test data. You can run all the tests
+  using the ASDF test op:
+
+  #+BEGIN_SRC lisp
+  (asdf:test-system :special-functions)
+  #+END_SRC
+
+  By default the test summary values (the same as in Boost) are
+  printed after each test, along with the key epsilon values.
+
+* Status
+
+  ** SBCL
+
+  Most development is done on SBCL 2.0.10.
+
+  ** ACL
+
+  Allegro Common Lisp 10.1 has underflow issues on some of the test
+  data, but otherwise works at a somewhat reduced accuracy on the
+  erf/c inverse functions.
+
+  ** CCL
+
+  The system was developed primarily on CCL until we implemented the
+  Boost-style test harness. There is an [[https://github.com/Symbolics/select/issues/3][issue with representations]] on
+  CCL that has not be tracked down. It's likely safe to use CCL, but
+  we can't be certain until the issue is fixed and we can run the test
+  suite.
+
+
+* Contributing
+  When contributing to this repository, please first discuss major
+  changes to the existing code you wish to make via a github
+  issue. Minor changes and major additions are welcome. Please [[https://chris.beams.io/posts/git-commit/][write
+  good commit messages]].
+
+
+* License
+  The Special-Functions library is available under the [[https://opensource.org/licenses/MS-PL][Microsoft
+  Public License]].
+
+
+* Copyright
+  Copyright (c) 2020 Symbolics Pte. Ltd. All rights reserved.
+

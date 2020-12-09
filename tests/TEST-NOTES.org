@@ -1,0 +1,8 @@
+* Links & References
+  ** Boost documentation
+  We patterned this test suite after the one used in Boost.
+  - [[https://www.boost.org/doc/libs/1_39_0/libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals2/error_test.html][Relative Error and Testing]]
+  - [[https://www.boost.org/doc/libs/1_42_0/boost/math/tools/test.hpp][Boost test harness code]] (test.hpp)
+  - [[https://www.boost.org/doc/libs/1_66_0/boost/math/tools/stats.hpp][Boost test results data structure]] (stats.hpp)
+  - [[https://github.com/boostorg/math/tree/c4972b02143b787387560f87238e50f55502834e/test][Boost math tests]] (data files, test runners)
+
