@@ -1,7 +1,24 @@
-* Special Functions
+# See https://github.com/alphapapa/emacs-package-dev-handbook/blob/master/README.org
+# For a good example of a README in org mode
+
+#+TITLE: Special Functions
 
   This library implements numerical special functions in common
-  lisp with a focus on high accuracy with double-float.
+  lisp with a focus on high accuracy double-float calculations.
+
+* Contents                                                         :noexport:
+:PROPERTIES:
+:TOC:      :include siblings :ignore this :depth 1 :force depth
+:END:
+:CONTENTS:
+- [[#Installation][Installation]]
+- [[#Numerical Domain][Numerical Domain]]
+- [[#API][API]]
+- [[#Tests][Tests]]
+- [[#Status][Status]]
+- [[#Contributing][Contributing]]
+:END:
+
 
 * Installation
 
@@ -9,17 +26,16 @@
   into your =~/common-lisp/= directory and then use quicklisp to load
   it, like so =(ql:quickload "special-functions")=.
 
-* Usage
+* Numerical Domain
 
-  We would like these functions to operate as much like ANSI Common
-  Lisp functions as possible. This means doing the 'right thing' when
-  presented with complex arguments and large numbers. However most
-  sources assume only the double-float domain, and not the complex
-  domain.
+  The library assumes working with double-floats. It will probably
+  work with single-float as well. Whilst we would prefer to handle the
+  complex domain, the majority of the source algorithms do not handle
+  this.
 
 * The API
 
-  ** Special Functions
+** Special Functions
 
    | function     | source |
    |--------------+--------|
@@ -29,14 +45,14 @@
    | inverse-erfc | Boost  |
 
 
-   ** Accuracy
+** Accuracy
 
    The following table shows the peak and mean errors using Boost test
    data. Tests run on MS Windows 10 with SBCL 2.0.10. Boost results
    taken from the Boost [[https://www.boost.org/doc/libs/1_69_0/libs/math/doc/html/math_toolkit/sf_erf/error_function.html][error function]] and [[https://www.boost.org/doc/libs/1_68_0/libs/math/doc/html/math_toolkit/sf_erf/error_inv.html][inverse error function]]
    pages.
 
-   *** Error rates for erf
+*** Error rates for erf
 
    | Data Set          | Boost (MS C++)                | Special-Functions                |
    |-------------------+-------------------------------+----------------------------------|
@@ -44,7 +60,7 @@
    | erf medium values | Max = 1ε     (Mean = 0.119ε)  | Max = 1ε       (Mean = 0.003ε    |
    | erf large values  | Max = 0ε     (Mean = 0ε)      |     N/A erf range 0 < x < 6      |
 
-   *** Error rates for erfc
+*** Error rates for erfc
 
    | Data Set           | Boost (MS C++)                | Special-Functions                  |
    |--------------------+-------------------------------+------------------------------------|
@@ -52,7 +68,7 @@
    | erfc medium values | Max = 1.65ε (Mean = 0.373ε)   | Max = 1.71ε     (Mean = 0.182ε     |
    | erfc large values  | Max = 1.14ε (Mean = 0.248ε)   | Max = 2.31e-15ε (Mean = 8.86e-18ε) |
 
-   *** Error rates for inverse-erf/c
+*** Error rates for inverse-erf/c
 
    | Data Set     | Boost (MS C++)              | Special-Functions        |
    |--------------+-----------------------------+--------------------------+
@@ -60,7 +76,7 @@
    | inverse-erfc | Max = 1ε    (Mean = 0.491ε) | Max = 2ε (Mean = 0.425ε) |
 
 
-   ** NaN and Infinity
+** NaN and Infinity
 
    The lisp specification mentions neither NaN nor infinity, so any
    proper treatment of these is going to be either implementation
@@ -89,17 +105,17 @@
 
 * Status
 
-  ** SBCL
+** SBCL
 
   Most development is done on SBCL 2.0.10.
 
-  ** ACL
+** ACL
 
   Allegro Common Lisp 10.1 has underflow issues on some of the test
   data, but otherwise works at a somewhat reduced accuracy on the
   erf/c inverse functions.
 
-  ** CCL
+** CCL
 
   The system was developed primarily on CCL until we implemented the
   Boost-style test harness. There is an [[https://github.com/Symbolics/select/issues/3][issue with representations]] on
