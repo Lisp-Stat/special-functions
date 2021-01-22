@@ -26,6 +26,11 @@
   into your =~/common-lisp/= directory and then use quicklisp to load
   it, like so =(ql:quickload "special-functions")=.
 
+** Dependencies
+   Most dependencies are in Quicklisp. Until we get our version of
+   numerical utilities in Quicklisp, you will also need to clone or
+   download it.
+
 * Numerical Domain
 
   The library assumes working with double-floats. It will probably
@@ -43,21 +48,22 @@
    | erfc         | libm   |
    | inverse-erf  | Boost  |
    | inverse-erfc | Boost  |
+   | log-gamma    | libm   |
 
 
 ** Accuracy
 
    The following table shows the peak and mean errors using Boost test
    data. Tests run on MS Windows 10 with SBCL 2.0.10. Boost results
-   taken from the Boost [[https://www.boost.org/doc/libs/1_69_0/libs/math/doc/html/math_toolkit/sf_erf/error_function.html][error function]] and [[https://www.boost.org/doc/libs/1_68_0/libs/math/doc/html/math_toolkit/sf_erf/error_inv.html][inverse error function]]
-   pages.
+   taken from the Boost [[https://www.boost.org/doc/libs/1_69_0/libs/math/doc/html/math_toolkit/sf_erf/error_function.html][error function, ]][[https://www.boost.org/doc/libs/1_68_0/libs/math/doc/html/math_toolkit/sf_erf/error_inv.html][inverse error function]] and
+   [[https://www.boost.org/doc/libs/1_74_0/libs/math/doc/html/math_toolkit/sf_gamma/lgamma.html][log-gamma]] pages.
 
 *** Error rates for erf
 
    | Data Set          | Boost (MS C++)                | Special-Functions                |
    |-------------------+-------------------------------+----------------------------------|
    | erf small values  | Max = 0.841ε (Mean = 0.0687ε) | Max = 6.10e-5ε (Mean = 4.58e-7ε) |
-   | erf medium values | Max = 1ε     (Mean = 0.119ε)  | Max = 1ε       (Mean = 0.003ε    |
+   | erf medium values | Max = 1ε     (Mean = 0.119ε)  | Max = 1ε       (Mean = 0.003ε)   |
    | erf large values  | Max = 0ε     (Mean = 0ε)      |     N/A erf range 0 < x < 6      |
 
 *** Error rates for erfc
@@ -65,7 +71,7 @@
    | Data Set           | Boost (MS C++)                | Special-Functions                  |
    |--------------------+-------------------------------+------------------------------------|
    | erfc small values  | Max = 0ε (Mean = 0)           | Max = 1ε        (Mean = 0.00667ε)  |
-   | erfc medium values | Max = 1.65ε (Mean = 0.373ε)   | Max = 1.71ε     (Mean = 0.182ε     |
+   | erfc medium values | Max = 1.65ε (Mean = 0.373ε)   | Max = 1.71ε     (Mean = 0.182ε)    |
    | erfc large values  | Max = 1.14ε (Mean = 0.248ε)   | Max = 2.31e-15ε (Mean = 8.86e-18ε) |
 
 *** Error rates for inverse-erf/c
@@ -75,6 +81,32 @@
    | inverse-erf  | Max = 1.09ε (Mean = 0.502ε) | Max = 2ε (Mean = 0.434ε) |
    | inverse-erfc | Max = 1ε    (Mean = 0.491ε) | Max = 2ε (Mean = 0.425ε) |
 
+*** Error rates for log-gamma
+
+   | Data Set   | Boost (MS C++)               | Special-Functions                |
+   |------------+------------------------------+----------------------------------|
+   | factorials | Max = 0.914ε (Mean = 0.175ε) | Max = 2.10ε   (Mean = 0.569ε)    |
+   | near 0     | Max = 0.964ε (Mean = 0.462ε) | Max = 1.93ε   (Mean = 0.662ε)    |
+   | near 1     | Max = 0.867ε (Mean = 0.468ε) | Max = 0.50ε   (Mean = 0.0183ε)   |
+   | near 2     | Max = 0.591ε (Mean = 0.159ε) | Max = 0.0156ε (Mean = 3.83d-4ε)  |
+   | near -10   | Max = 4.22ε  (Mean = 1.33ε)  | Max = 4.83d+5ε (Mean = 3.06d+4ε) |
+   | near -55   | Max = 0.821ε (Mean = 0.419ε) | Max = 8.16d+4ε (Mean = 4.53d+3ε) |
+
+   The results for log gamma are good near 1 and 2, bettering those of
+   Boost, however are much worse (relatively speaking) at values of ~x
+   > 8~. I don't have a good explanation for this, since the libm
+   values match Boost more closely. For example:
+
+   #+BEGIN_EXAMPLE
+   (spfn:log-gamma -9.99999237060546875d0) = -3.3208925610275326d0
+   (libm:lgamma    -9.99999237060546875d0) = -3.3208925610151265d0
+    Boost test answer                        -3.320892561015125097640948165422843317137
+   #+END_EXAMPLE
+
+   libm:lgamma provides an additional 4 digits of accuracy over
+   spfn:log-gamma when compared to the Boost test answer, despite
+   using idential computations. log-gamma is still within 12 digits of
+   agreement though, and likely good enough for most uses.
 
 ** NaN and Infinity
 
@@ -85,10 +117,10 @@
    We are using the [[https://github.com/Shinmera/float-features][float-features]] library. It works well, but doesn't
    support NaN. At some point we need to rationalize infinity and NaN
    throughout Common Lisp Statistics. There is some support for
-   infinity in the extended-reals package of num-utils, as well as in
-   OCT, but neither is comprehensive. Openlibm and Cephes have
-   definitions, but we don't want to introduce a large dependency just
-   to get these definitions.
+   infinity in the extended-reals package of [[https://github.com/Common-Lisp-Statistics/numerical-utilities][numerical-utilities]], but
+   it is not comprehensive. Openlibm and Cephes have definitions, but
+   we don't want to introduce a large dependency just to get these
+   definitions.
 
 
 * Tests

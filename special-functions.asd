@@ -11,7 +11,8 @@
   :pathname    "src"
   :components ((:file #:pkgdcl)
 	       (:file #:utils)
-	       (:file #:erf))
+	       (:file #:erf)
+	       (:file #:log-gamma))
   :in-order-to ((test-op (test-op special-functions/tests))))
 
 
@@ -33,15 +34,17 @@
 		:components ((:file #:prologue)
 			     (:file #:erf-small-data)
 			     (:file #:erf-medium-data)
-#-allegro		     (:file #:erf-large-data) ; ACL raises underflow condition
+			     #-allegro (:file #:erf-large-data) ; ACL raises underflow condition
 			     (:file #:erf-inverse-data)
 			     (:file #:erfc-inverse-data)
-#-allegro		     (:file #:erfc-inverse-small-data)
+			     #-allegro (:file #:erfc-inverse-small-data)
+			     (:file #:gamma-data)
 			     (:file #:epilogue)))
 	       (:module tests
 		:components (
 			     (:file #:main)
-			     (:file #:erf-test))))
+			     (:file #:erf-test)
+			     (:file #:gamma-test))))
 
   :perform (asdf:test-op (o s)
 			 (uiop:symbol-call :fiveam '#:run!

@@ -25,7 +25,7 @@
 Include some values in epsilon if report-epsilon is true. This is useful when comparing to other implementations"
   (write result)
   (when report-epsilon
-    (format t "~%   Key stats in terms of epsilon:~%     Max error = ~,2Eε, mean error = ~,2Eε~%"
+    (format t "~%   Key stats in terms of epsilon:~%     Max = ~,2Eε (Mean = ~,2Eε)~%"
 	    (/ (max-error  result) double-float-epsilon)
 	    (/ (mean-error result) double-float-epsilon))))
 

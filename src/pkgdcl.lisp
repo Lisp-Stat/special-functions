@@ -3,7 +3,8 @@
 
 (uiop:define-package #:special-functions
     (:use #:cl
-	  #:num-utils.polynomial)	; polynomial evaluation
+	  #:num-utils.polynomial	; polynomial evaluation
+	  #:num-utils.arithmetic)
   (:nicknames #:spfn #:specfun)
 
   (:import-from #:FLOAT-FEATURES
@@ -14,7 +15,8 @@
   (:export #:erf			; libm
 	   #:erfc			; libm
 	   #:inverse-erf		; Boost
-	   #:inverse-erfc))		; Boost
+	   #:inverse-erfc		; Boost
+	   #:log-gamma))		; libm
 
 
 
