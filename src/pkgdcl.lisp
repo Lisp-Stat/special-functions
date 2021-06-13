@@ -7,7 +7,7 @@
 	  #:num-utils.arithmetic)
   (:nicknames #:spfn #:specfun)
 
-  (:import-from #:FLOAT-FEATURES
+  (:import-from #:float-features
 		#:double-float-positive-infinity
 		#:double-float-negative-infinity
 		#:float-nan-p)
@@ -16,6 +16,7 @@
 	   #:erfc			; libm
 	   #:inverse-erf		; Boost
 	   #:inverse-erfc		; Boost
+	   #:gamma
 	   #:log-gamma))		; libm
 
 

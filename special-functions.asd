@@ -1,10 +1,10 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: CL-USER -*-
-;;; Copyright (c) 2020 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2021-2020 by Symbolics Pte. Ltd. All rights reserved.
 
 (asdf:defsystem #:special-functions
   :description "Special functions in Common Lisp"
   :author      "Steve Nunez <steve@symbolics.tech>"
-  :license     "MS-PL"
+  :license     :MS-PL
   :version     (:read-file-form "version.sexp")
   :serial      t
   :depends-on  (:num-utils :float-features)
@@ -12,6 +12,7 @@
   :components ((:file #:pkgdcl)
 	       (:file #:utils)
 	       (:file #:erf)
+	       (:file #:gamma)
 	       (:file #:log-gamma))
   :in-order-to ((test-op (test-op special-functions/tests))))
 
@@ -20,7 +21,7 @@
   :description "Tests for special functions"
   :version      (:read-file-form "version.sexp")
   :author "Steven Nunez <steve@symbolics.tech>"
-  :license "MS-PL"
+  :license :MS-PL
   :depends-on (#:special-functions
 
 	       ;; Test tools
@@ -45,7 +46,6 @@
 			     (:file #:main)
 			     (:file #:erf-test)
 			     (:file #:gamma-test))))
-
   :perform (asdf:test-op (o s)
 			 (uiop:symbol-call :fiveam '#:run!
 					   (uiop:find-symbol* '#:all-tests
