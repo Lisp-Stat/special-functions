@@ -1,6 +1,6 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: SPECFUN -*-
 ;;; Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
-;;; Copyright (c) 2020 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2020,2021 by Symbolics Pte. Ltd. All rights reserved.
 (in-package #:special-functions)
 
 #| Openlibm implementation
@@ -72,11 +72,6 @@ https://github.com/JuliaMath/openlibm/blob/master/src/e_lgamma_r.c
 #| Note: the libm implementation is some really horrible code; just
 short of obfuscated IMO. I've tried to rationalise it the best I can,
 and it now only bears a passing resemblance to the original. |#
-
-(defun sin-pi (x)
-  "Returns (sin (* pi x))"
-  (declare (double-float x))
-  (sin (* cl:pi x)))
 
 (let ((two52 4.50359962737049600000d+15) ; 0x43300000, 0x00000000
       (two58 2.8823037615171174d17)
@@ -181,8 +176,8 @@ and it now only bears a passing resemblance to the original. |#
     (declare (double-float n))
     (let* ((x (abs n))
 	   (nadj (log (/ pi (abs (* (sin-pi n) n)))))
-	   (r (cond ((eql x  double-float-positive-infinity) (square x))
-		    ((eql x  double-float-negative-infinity) (square x)) ; Why does SBCL claim this is unreachable?
+	   (r (cond ((eql x double-float-positive-infinity) (square x))
+		    ((eql x double-float-negative-infinity) (square x)) ; Why does SBCL claim this is unreachable?
 		    ((= x 0) double-float-positive-infinity)
 		    ((or (= x 1) (= x 2)) 0)
 		    ((< x (expt 2 -70)) (* (signum x) (- (log (abs x)))))

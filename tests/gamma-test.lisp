@@ -6,16 +6,15 @@
   :description "Tests for the gamma and related functions"
   :in all-tests)
 (in-suite gamma)
-#|
+
 (test gamma-factorial
   :description "Test complete gamma at integer and half integer values"
   (let ((result (test-fn (select factorials t 1)
 			 #'(lambda (i params)
 			     (specfun:gamma (aref (car params) i)))
 			 (select factorials t 0))))
-    (is (> 1D-7 (max-error  result)) "Maximum error exceeds 1.0D-7 threshold")
-    (is (> 1D-8 (mean-error result)) "Mean error exceeds 1.0D-8 threshold")
-    (is (> 1D-7 (rms result))        "RMS error exceeds 1.0D-7 threshold")
+    (is (> (eps 3.8d0)  (max-error result)) "Maximum error exceeds 3.8ε threshold")
+    (is (> (eps 0.95d0) (mean-error result)) "Mean error exceeds 0.95ε threshold")
     (print-test-summary result :report-epsilon t)))
 
 (test gamma-near-0
@@ -24,9 +23,8 @@
 			 #'(lambda (i params)
 			     (specfun:gamma (aref (car params) i)))
 			 (select near-0 t 0))))
-    (is (> 1D-7 (max-error  result)) "Maximum error exceeds 1.0D-7 threshold")
-    (is (> 1D-8 (mean-error result)) "Mean error exceeds 1.0D-8 threshold")
-    (is (> 1D-7 (rms result))        "RMS error exceeds 1.0D-7 threshold")
+    (is (> (eps 2.26d0) (max-error result))  "Maximum error exceeds 2.26ε threshold")
+    (is (> (eps 0.57d0) (mean-error result)) "Mean error exceeds 0.57ε threshold")
     (print-test-summary result :report-epsilon t)))
 
 (test gamma-near-1
@@ -35,9 +33,8 @@
 			 #'(lambda (i params)
 			     (specfun:gamma (aref (car params) i)))
 			 (select near-1 t 0))))
-    (is (> 1D-7 (max-error  result)) "Maximum error exceeds 1.0D-7 threshold")
-    (is (> 1D-8 (mean-error result)) "Mean error exceeds 1.0D-8 threshold")
-    (is (> 1D-7 (rms result))        "RMS error exceeds 1.0D-7 threshold")
+    (is (> (eps 2.26d0)  (max-error result))  "Maximum error exceeds 2.26ε threshold")
+    (is (> (eps 0.86d0) (mean-error result)) "Mean error exceeds 0.86ε threshold")
     (print-test-summary result :report-epsilon t)))
 
 (test gamma-near-2
@@ -46,9 +43,8 @@
 			 #'(lambda (i params)
 			     (specfun:gamma (aref (car params) i)))
 			 (select near-2 t 0))))
-    (is (> 1D-7 (max-error  result)) "Maximum error exceeds 1.0D-7 threshold")
-    (is (> 1D-8 (mean-error result)) "Mean error exceeds 1.0D-8 threshold")
-    (is (> 1D-7 (rms result))        "RMS error exceeds 1.0D-7 threshold")
+    (is (> (eps 2d0) (max-error result))  "Maximum error exceeds 2ε threshold")
+    (is (> (eps 0.56d0) (mean-error result)) "Mean error exceeds 0.56ε threshold")
     (print-test-summary result :report-epsilon t)))
 
 (test gamma-near-minus-10
@@ -57,9 +53,8 @@
 			 #'(lambda (i params)
 			     (specfun:gamma (aref (car params) i)))
 			 (select near-minus-10 t 0))))
-    (is (> 1D-7 (max-error  result)) "Maximum error exceeds 1.0D-7 threshold")
-    (is (> 1D-8 (mean-error result)) "Mean error exceeds 1.0D-8 threshold")
-    (is (> 1D-7 (rms result))        "RMS error exceeds 1.0D-7 threshold")
+    (is (> (eps 0.125d0) (max-error result))  "Maximum error exceeds 0.125ε threshold")
+    (is (> (eps 4.3d3) (mean-error result)) "Mean error exceeds 4.3d-3ε threshold")
     (print-test-summary result :report-epsilon t)))
 
 (test gamma-near-minus-55
@@ -74,11 +69,11 @@
 			 #'(lambda (i params)
 			     (specfun:gamma (aref (car params) i)))
 			 (select near-minus-55 t 0))))
-    (is (> 1D-7 (max-error  result)) "Maximum error exceeds 1.0D-7 threshold")
-    (is (> 1D-8 (mean-error result)) "Mean error exceeds 1.0D-8 threshold")
-    (is (> 1D-7 (rms result))        "RMS error exceeds 1.0D-7 threshold")
+    (is (> (eps 3.75d-52) (max-error result))  "Maximum error exceeds 3.75d-53ε threshold")
+    (is (> (eps 1.86d-53) (mean-error result)) "Mean error exceeds 1.86d-53ε threshold")
     (print-test-summary result :report-epsilon t)))
-|#
+
+
 
 (def-suite log-gamma
   :description "Tests for log-gamma"
@@ -91,7 +86,7 @@
 			 #'(lambda (i params)
 			     (specfun:log-gamma (aref (car params) i)))
 			 (select factorials t 0)))) ; input value column
-    (is (> (eps 2.11d0)  (max-error  result)) "Maximum error exceeds 2.1ε threshold")
+    (is (> (eps 2.11d0) (max-error result)) "Maximum error exceeds 2.1ε threshold")
     (is (> (eps 0.569) (mean-error result)) "Mean error exceeds 0.569ε threshold")
     (print-test-summary result :report-epsilon *report-epsilon*)))
 

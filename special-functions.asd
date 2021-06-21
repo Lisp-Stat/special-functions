@@ -1,5 +1,5 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: CL-USER -*-
-;;; Copyright (c) 2021-2020 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2020,2021 by Symbolics Pte. Ltd. All rights reserved.
 
 (asdf:defsystem #:special-functions
   :description "Special functions in Common Lisp"
@@ -13,6 +13,7 @@
 	       (:file #:utils)
 	       (:file #:erf)
 	       (:file #:gamma)
+	       (:file #:factorial)
 	       (:file #:log-gamma))
   :in-order-to ((test-op (test-op special-functions/tests))))
 
