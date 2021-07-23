@@ -1,0 +1,756 @@
+This is special-functions.info, produced by makeinfo version 6.7 from
+special-functions.texi.
+
+INFO-DIR-SECTION Common Lisp
+START-INFO-DIR-ENTRY
+* Special Functions Reference: (special-functions). The Special Functions Reference Manual.
+END-INFO-DIR-ENTRY
+
+
+File: special-functions.info,  Node: Top,  Next: Systems,  Prev: (dir),  Up: (dir)
+
+The Special Functions Reference Manual
+**************************************
+
+This is the Special Functions Reference Manual, version 1.1.
+
+* Menu:
+
+* Systems:: The systems documentation
+* Files:: The files documentation
+* Packages:: The packages documentation
+* Definitions:: The symbols documentation
+* Indexes:: Concepts, functions, variables and data types
+
+
+File: special-functions.info,  Node: Systems,  Next: Files,  Prev: Top,  Up: Top
+
+1 Systems
+*********
+
+The main system appears first, followed by any subsystem dependency.
+
+* Menu:
+
+* The special-functions system::
+
+
+File: special-functions.info,  Node: The special-functions system,  Prev: Systems,  Up: Systems
+
+1.1 special-functions
+=====================
+
+*Author*
+     Steve Nunez <<steve@symbolics.tech>>
+*License*
+     MS-PL
+*Description*
+     Special functions in Common Lisp
+*Version*
+     1.1
+*Dependencies*
+        • num-utils
+        • float-features
+*Source*
+     *note special-functions.asd: go to the special-functions․asd file.
+     (file)
+*Directory*
+     s:/src/special-functions/
+*Components*
+        • *note pkgdcl.lisp: go to the special-functions/pkgdcl․lisp
+          file. (file)
+        • *note utils.lisp: go to the special-functions/utils․lisp file.
+          (file)
+        • *note erf.lisp: go to the special-functions/erf․lisp file.
+          (file)
+        • *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+        • *note log-gamma.lisp: go to the
+          special-functions/log-gamma․lisp file. (file)
+        • *note factorial.lisp: go to the
+          special-functions/factorial․lisp file. (file)
+
+
+File: special-functions.info,  Node: Files,  Next: Packages,  Prev: Systems,  Up: Top
+
+2 Files
+*******
+
+Files are sorted by type and then listed depth-first from the systems
+components trees.
+
+* Menu:
+
+* Lisp files::
+
+
+File: special-functions.info,  Node: Lisp files,  Prev: Files,  Up: Files
+
+2.1 Lisp
+========
+
+* Menu:
+
+* The special-functions.asd file: The special-functions․asd file.
+* The special-functions/pkgdcl.lisp file: The special-functions/pkgdcl․lisp file.
+* The special-functions/utils.lisp file: The special-functions/utils․lisp file.
+* The special-functions/erf.lisp file: The special-functions/erf․lisp file.
+* The special-functions/gamma.lisp file: The special-functions/gamma․lisp file.
+* The special-functions/log-gamma.lisp file: The special-functions/log-gamma․lisp file.
+* The special-functions/factorial.lisp file: The special-functions/factorial․lisp file.
+
+
+File: special-functions.info,  Node: The special-functions․asd file,  Next: The special-functions/pkgdcl․lisp file,  Prev: Lisp files,  Up: Lisp files
+
+2.1.1 special-functions.asd
+---------------------------
+
+*Location*
+     /src/special-functions/special-functions.asd
+*Systems*
+     *note special-functions: go to the special-functions system.
+     (system)
+
+
+File: special-functions.info,  Node: The special-functions/pkgdcl․lisp file,  Next: The special-functions/utils․lisp file,  Prev: The special-functions․asd file,  Up: Lisp files
+
+2.1.2 special-functions/pkgdcl.lisp
+-----------------------------------
+
+*Parent*
+     *note special-functions: go to the special-functions system.
+     (system)
+*Location*
+     pkgdcl.lisp
+*Packages*
+     *note special-functions: go to the SPECIAL-FUNCTIONS package.
+
+
+File: special-functions.info,  Node: The special-functions/utils․lisp file,  Next: The special-functions/erf․lisp file,  Prev: The special-functions/pkgdcl․lisp file,  Up: Lisp files
+
+2.1.3 special-functions/utils.lisp
+----------------------------------
+
+*Dependency*
+     *note pkgdcl.lisp: go to the special-functions/pkgdcl․lisp file.
+     (file)
+*Parent*
+     *note special-functions: go to the special-functions system.
+     (system)
+*Location*
+     utils.lisp
+*Internal Definitions*
+        • *note +square-root-2-pi+: go to the
+          SPECIAL-FUNCTIONS∶∶+SQUARE-ROOT-2-PI+ constant. (constant)
+        • *note decode-float64: go to the
+          SPECIAL-FUNCTIONS∶∶DECODE-FLOAT64 function. (function)
+        • *note encode-float64: go to the
+          SPECIAL-FUNCTIONS∶∶ENCODE-FLOAT64 function. (function)
+        • *note sin-pi: go to the SPECIAL-FUNCTIONS∶∶SIN-PI function.
+          (function)
+
+
+File: special-functions.info,  Node: The special-functions/erf․lisp file,  Next: The special-functions/gamma․lisp file,  Prev: The special-functions/utils․lisp file,  Up: Lisp files
+
+2.1.4 special-functions/erf.lisp
+--------------------------------
+
+*Dependency*
+     *note utils.lisp: go to the special-functions/utils․lisp file.
+     (file)
+*Parent*
+     *note special-functions: go to the special-functions system.
+     (system)
+*Location*
+     erf.lisp
+*Exported Definitions*
+        • *note erf: go to the SPECIAL-FUNCTIONS∶∶ERF function.
+          (function)
+        • *note erfc: go to the SPECIAL-FUNCTIONS∶∶ERFC function.
+          (function)
+        • *note inverse-erf: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERF
+          function. (function)
+        • *note inverse-erfc: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERFC
+          function. (function)
+*Internal Definitions*
+     *note inverse-error: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERROR
+     function. (function)
+
+
+File: special-functions.info,  Node: The special-functions/gamma․lisp file,  Next: The special-functions/log-gamma․lisp file,  Prev: The special-functions/erf․lisp file,  Up: Lisp files
+
+2.1.5 special-functions/gamma.lisp
+----------------------------------
+
+*Dependency*
+     *note erf.lisp: go to the special-functions/erf․lisp file. (file)
+*Parent*
+     *note special-functions: go to the special-functions system.
+     (system)
+*Location*
+     gamma.lisp
+*Exported Definitions*
+     *note gamma: go to the SPECIAL-FUNCTIONS∶∶GAMMA function.
+     (function)
+*Internal Definitions*
+        • *note gamma-inverse-small: go to the
+          SPECIAL-FUNCTIONS∶∶GAMMA-INVERSE-SMALL function. (function)
+        • *note gamma-medium: go to the SPECIAL-FUNCTIONS∶∶GAMMA-MEDIUM
+          function. (function)
+        • *note maxgamd: go to the SPECIAL-FUNCTIONS∶∶MAXGAMD constant.
+          (constant)
+        • *note sign-gamma: go to the SPECIAL-FUNCTIONS∶∶SIGN-GAMMA
+          function. (function)
+        • *note stirling: go to the SPECIAL-FUNCTIONS∶∶STIRLING
+          function. (function)
+        • *note tiny: go to the SPECIAL-FUNCTIONS∶∶TINY constant.
+          (constant)
+
+
+File: special-functions.info,  Node: The special-functions/log-gamma․lisp file,  Next: The special-functions/factorial․lisp file,  Prev: The special-functions/gamma․lisp file,  Up: Lisp files
+
+2.1.6 special-functions/log-gamma.lisp
+--------------------------------------
+
+*Dependency*
+     *note gamma.lisp: go to the special-functions/gamma․lisp file.
+     (file)
+*Parent*
+     *note special-functions: go to the special-functions system.
+     (system)
+*Location*
+     log-gamma.lisp
+*Exported Definitions*
+     *note log-gamma: go to the SPECIAL-FUNCTIONS∶∶LOG-GAMMA function.
+     (function)
+
+
+File: special-functions.info,  Node: The special-functions/factorial․lisp file,  Prev: The special-functions/log-gamma․lisp file,  Up: Lisp files
+
+2.1.7 special-functions/factorial.lisp
+--------------------------------------
+
+*Dependency*
+     *note log-gamma.lisp: go to the special-functions/log-gamma․lisp
+     file. (file)
+*Parent*
+     *note special-functions: go to the special-functions system.
+     (system)
+*Location*
+     factorial.lisp
+*Exported Definitions*
+     *note factorial: go to the SPECIAL-FUNCTIONS∶∶FACTORIAL function.
+     (function)
+*Internal Definitions*
+        • *note factorial-table: go to the
+          SPECIAL-FUNCTIONS∶∶FACTORIAL-TABLE special variable. (special
+          variable)
+        • *note ramanujan: go to the SPECIAL-FUNCTIONS∶∶RAMANUJAN
+          function. (function)
+        • *note sam-ramanujan: go to the
+          SPECIAL-FUNCTIONS∶∶SAM-RAMANUJAN function. (function)
+
+
+File: special-functions.info,  Node: Packages,  Next: Definitions,  Prev: Files,  Up: Top
+
+3 Packages
+**********
+
+Packages are listed by definition order.
+
+* Menu:
+
+* The special-functions package::
+
+
+File: special-functions.info,  Node: The special-functions package,  Prev: Packages,  Up: Packages
+
+3.1 special-functions
+=====================
+
+*Source*
+     *note pkgdcl.lisp: go to the special-functions/pkgdcl․lisp file.
+     (file)
+*Nicknames*
+        • specfun
+        • spfn
+*Use List*
+        • num-utils.arithmetic
+        • num-utils.polynomial
+        • common-lisp
+*Exported Definitions*
+        • *note erf: go to the SPECIAL-FUNCTIONS∶∶ERF function.
+          (function)
+        • *note erfc: go to the SPECIAL-FUNCTIONS∶∶ERFC function.
+          (function)
+        • *note factorial: go to the SPECIAL-FUNCTIONS∶∶FACTORIAL
+          function. (function)
+        • *note gamma: go to the SPECIAL-FUNCTIONS∶∶GAMMA function.
+          (function)
+        • *note inverse-erf: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERF
+          function. (function)
+        • *note inverse-erfc: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERFC
+          function. (function)
+        • *note log-gamma: go to the SPECIAL-FUNCTIONS∶∶LOG-GAMMA
+          function. (function)
+*Internal Definitions*
+        • *note +square-root-2-pi+: go to the
+          SPECIAL-FUNCTIONS∶∶+SQUARE-ROOT-2-PI+ constant. (constant)
+        • *note decode-float64: go to the
+          SPECIAL-FUNCTIONS∶∶DECODE-FLOAT64 function. (function)
+        • *note encode-float64: go to the
+          SPECIAL-FUNCTIONS∶∶ENCODE-FLOAT64 function. (function)
+        • *note factorial-table: go to the
+          SPECIAL-FUNCTIONS∶∶FACTORIAL-TABLE special variable. (special
+          variable)
+        • *note gamma-inverse-small: go to the
+          SPECIAL-FUNCTIONS∶∶GAMMA-INVERSE-SMALL function. (function)
+        • *note gamma-medium: go to the SPECIAL-FUNCTIONS∶∶GAMMA-MEDIUM
+          function. (function)
+        • *note inverse-error: go to the
+          SPECIAL-FUNCTIONS∶∶INVERSE-ERROR function. (function)
+        • *note maxgamd: go to the SPECIAL-FUNCTIONS∶∶MAXGAMD constant.
+          (constant)
+        • *note ramanujan: go to the SPECIAL-FUNCTIONS∶∶RAMANUJAN
+          function. (function)
+        • *note sam-ramanujan: go to the
+          SPECIAL-FUNCTIONS∶∶SAM-RAMANUJAN function. (function)
+        • *note sign-gamma: go to the SPECIAL-FUNCTIONS∶∶SIGN-GAMMA
+          function. (function)
+        • *note sin-pi: go to the SPECIAL-FUNCTIONS∶∶SIN-PI function.
+          (function)
+        • *note stirling: go to the SPECIAL-FUNCTIONS∶∶STIRLING
+          function. (function)
+        • *note tiny: go to the SPECIAL-FUNCTIONS∶∶TINY constant.
+          (constant)
+
+
+File: special-functions.info,  Node: Definitions,  Next: Indexes,  Prev: Packages,  Up: Top
+
+4 Definitions
+*************
+
+Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+
+* Menu:
+
+* Exported definitions::
+* Internal definitions::
+
+
+File: special-functions.info,  Node: Exported definitions,  Next: Internal definitions,  Prev: Definitions,  Up: Definitions
+
+4.1 Exported definitions
+========================
+
+* Menu:
+
+* Exported functions::
+
+
+File: special-functions.info,  Node: Exported functions,  Prev: Exported definitions,  Up: Exported definitions
+
+4.1.1 Functions
+---------------
+
+ -- Function: erf N
+     Returns the error function of n
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note erf.lisp: go to the special-functions/erf․lisp file.
+          (file)
+ -- Function: erfc X
+     Returns the complementary error function of x
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note erf.lisp: go to the special-functions/erf․lisp file.
+          (file)
+ -- Function: factorial X
+     Return the factorial value X! for X <= MAX-FACTORIAL;
+     DOUBLE-FLOAT-POSITIVE-INFINITY if x < 0.  X must be an INTEGER.
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note factorial.lisp: go to the
+          special-functions/factorial․lisp file. (file)
+ -- Function: gamma X
+     Return gamma(x), x <= MAXGAMD; NAN/RTE if x is a non-positive
+     integer
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+ -- Function: inverse-erf X
+     Return the inverse function of erf: (erf (inverse-erf x)) = x, -1 <
+     x < 1
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note erf.lisp: go to the special-functions/erf․lisp file.
+          (file)
+ -- Function: inverse-erfc X
+     Return the inverse function of erfc: (erfc (inverse-erfc x)) = x, 0
+     < x < 2
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note erf.lisp: go to the special-functions/erf․lisp file.
+          (file)
+ -- Function: log-gamma N
+     Return the logarithm of gamma(x)
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note log-gamma.lisp: go to the
+          special-functions/log-gamma․lisp file. (file)
+
+
+File: special-functions.info,  Node: Internal definitions,  Prev: Exported definitions,  Up: Definitions
+
+4.2 Internal definitions
+========================
+
+* Menu:
+
+* Internal constants::
+* Internal special variables::
+* Internal functions::
+
+
+File: special-functions.info,  Node: Internal constants,  Next: Internal special variables,  Prev: Internal definitions,  Up: Internal definitions
+
+4.2.1 Constants
+---------------
+
+ -- Constant: +square-root-2-pi+
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note utils.lisp: go to the special-functions/utils․lisp file.
+          (file)
+ -- Constant: maxgamd
+     Maximum argument for gamma
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+ -- Constant: tiny
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+
+
+File: special-functions.info,  Node: Internal special variables,  Next: Internal functions,  Prev: Internal constants,  Up: Internal definitions
+
+4.2.2 Special variables
+-----------------------
+
+ -- Special Variable: factorial-table
+     Table of factorials for integer values up to 100
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note factorial.lisp: go to the
+          special-functions/factorial․lisp file. (file)
+
+
+File: special-functions.info,  Node: Internal functions,  Prev: Internal special variables,  Up: Internal definitions
+
+4.2.3 Functions
+---------------
+
+ -- Function: decode-float64 X
+     Convert the (unsigned-byte 64) bit representation into a native
+     double-float
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note utils.lisp: go to the special-functions/utils․lisp file.
+          (file)
+ -- Function: encode-float64 X
+     Returns the bit representation of the double-float X as an
+     (unsigned-byte 64)
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note utils.lisp: go to the special-functions/utils․lisp file.
+          (file)
+ -- Function: gamma-inverse-small X
+     Return 1/gamma(x) for |x| < 0.03125
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+ -- Function: gamma-medium X
+     Return gamma(x), |x| <= 13, x negative integer produces div by 0
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+ -- Function: inverse-error P Q
+     Return value of inverse error function: erf_inv(p) if p <= 0.5,
+     erfc_inv(q) otherwise
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note erf.lisp: go to the special-functions/erf․lisp file.
+          (file)
+ -- Function: ramanujan X
+     Ramanujan’s original approximation of n!
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note factorial.lisp: go to the
+          special-functions/factorial․lisp file. (file)
+ -- Function: sam-ramanujan X
+     Modification of Ramanujan’s approximation of n!  by Sidney A.
+     Morris
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note factorial.lisp: go to the
+          special-functions/factorial․lisp file. (file)
+ -- Function: sign-gamma X
+     Return sign(gamma(x)), invalid for 0 or negative integer
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+ -- Function: sin-pi X
+     Returns (sin (* pi x))
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note utils.lisp: go to the special-functions/utils․lisp file.
+          (file)
+ -- Function: stirling X
+     Return (gamma x) for x > 13
+     *Package*
+          *note special-functions: go to the SPECIAL-FUNCTIONS package.
+     *Source*
+          *note gamma.lisp: go to the special-functions/gamma․lisp file.
+          (file)
+
+
+File: special-functions.info,  Node: Indexes,  Prev: Definitions,  Up: Top
+
+Appendix A Indexes
+******************
+
+* Menu:
+
+* Concept index::
+* Function index::
+* Variable index::
+* Data type index::
+
+
+File: special-functions.info,  Node: Concept index,  Next: Function index,  Prev: Indexes,  Up: Indexes
+
+A.1 Concepts
+============
+
+ [index ]
+* Menu:
+
+* File, Lisp, special-functions.asd:     The special-functions․asd file.
+                                                                (line 6)
+* File, Lisp, special-functions/erf.lisp: The special-functions/erf․lisp file.
+                                                                (line 6)
+* File, Lisp, special-functions/factorial.lisp: The special-functions/factorial․lisp file.
+                                                                (line 6)
+* File, Lisp, special-functions/gamma.lisp: The special-functions/gamma․lisp file.
+                                                                (line 6)
+* File, Lisp, special-functions/log-gamma.lisp: The special-functions/log-gamma․lisp file.
+                                                                (line 6)
+* File, Lisp, special-functions/pkgdcl.lisp: The special-functions/pkgdcl․lisp file.
+                                                                (line 6)
+* File, Lisp, special-functions/utils.lisp: The special-functions/utils․lisp file.
+                                                                (line 6)
+* Lisp File, special-functions.asd:      The special-functions․asd file.
+                                                                (line 6)
+* Lisp File, special-functions/erf.lisp: The special-functions/erf․lisp file.
+                                                                (line 6)
+* Lisp File, special-functions/factorial.lisp: The special-functions/factorial․lisp file.
+                                                                (line 6)
+* Lisp File, special-functions/gamma.lisp: The special-functions/gamma․lisp file.
+                                                                (line 6)
+* Lisp File, special-functions/log-gamma.lisp: The special-functions/log-gamma․lisp file.
+                                                                (line 6)
+* Lisp File, special-functions/pkgdcl.lisp: The special-functions/pkgdcl․lisp file.
+                                                                (line 6)
+* Lisp File, special-functions/utils.lisp: The special-functions/utils․lisp file.
+                                                                (line 6)
+* special-functions.asd:                 The special-functions․asd file.
+                                                                (line 6)
+* special-functions/erf.lisp:            The special-functions/erf․lisp file.
+                                                                (line 6)
+* special-functions/factorial.lisp:      The special-functions/factorial․lisp file.
+                                                                (line 6)
+* special-functions/gamma.lisp:          The special-functions/gamma․lisp file.
+                                                                (line 6)
+* special-functions/log-gamma.lisp:      The special-functions/log-gamma․lisp file.
+                                                                (line 6)
+* special-functions/pkgdcl.lisp:         The special-functions/pkgdcl․lisp file.
+                                                                (line 6)
+* special-functions/utils.lisp:          The special-functions/utils․lisp file.
+                                                                (line 6)
+
+
+File: special-functions.info,  Node: Function index,  Next: Variable index,  Prev: Concept index,  Up: Indexes
+
+A.2 Functions
+=============
+
+ [index ]
+* Menu:
+
+* decode-float64:                        Internal functions.   (line  6)
+* encode-float64:                        Internal functions.   (line 14)
+* erf:                                   Exported functions.   (line  6)
+* erfc:                                  Exported functions.   (line 13)
+* factorial:                             Exported functions.   (line 20)
+* Function, decode-float64:              Internal functions.   (line  7)
+* Function, encode-float64:              Internal functions.   (line 15)
+* Function, erf:                         Exported functions.   (line  7)
+* Function, erfc:                        Exported functions.   (line 14)
+* Function, factorial:                   Exported functions.   (line 21)
+* Function, gamma:                       Exported functions.   (line 29)
+* Function, gamma-inverse-small:         Internal functions.   (line 23)
+* Function, gamma-medium:                Internal functions.   (line 30)
+* Function, inverse-erf:                 Exported functions.   (line 37)
+* Function, inverse-erfc:                Exported functions.   (line 45)
+* Function, inverse-error:               Internal functions.   (line 37)
+* Function, log-gamma:                   Exported functions.   (line 53)
+* Function, ramanujan:                   Internal functions.   (line 45)
+* Function, sam-ramanujan:               Internal functions.   (line 52)
+* Function, sign-gamma:                  Internal functions.   (line 60)
+* Function, sin-pi:                      Internal functions.   (line 67)
+* Function, stirling:                    Internal functions.   (line 74)
+* gamma:                                 Exported functions.   (line 28)
+* gamma-inverse-small:                   Internal functions.   (line 22)
+* gamma-medium:                          Internal functions.   (line 29)
+* inverse-erf:                           Exported functions.   (line 36)
+* inverse-erfc:                          Exported functions.   (line 44)
+* inverse-error:                         Internal functions.   (line 36)
+* log-gamma:                             Exported functions.   (line 52)
+* ramanujan:                             Internal functions.   (line 44)
+* sam-ramanujan:                         Internal functions.   (line 51)
+* sign-gamma:                            Internal functions.   (line 59)
+* sin-pi:                                Internal functions.   (line 66)
+* stirling:                              Internal functions.   (line 73)
+
+
+File: special-functions.info,  Node: Variable index,  Next: Data type index,  Prev: Function index,  Up: Indexes
+
+A.3 Variables
+=============
+
+ [index ]
+* Menu:
+
+* +square-root-2-pi+:                    Internal constants.   (line  6)
+* Constant, +square-root-2-pi+:          Internal constants.   (line  7)
+* Constant, maxgamd:                     Internal constants.   (line 13)
+* Constant, tiny:                        Internal constants.   (line 20)
+* factorial-table:                       Internal special variables.
+                                                               (line  6)
+* maxgamd:                               Internal constants.   (line 12)
+* Special Variable, factorial-table:     Internal special variables.
+                                                               (line  7)
+* tiny:                                  Internal constants.   (line 19)
+
+
+File: special-functions.info,  Node: Data type index,  Prev: Variable index,  Up: Indexes
+
+A.4 Data types
+==============
+
+ [index ]
+* Menu:
+
+* Package, special-functions:            The special-functions package.
+                                                                (line 6)
+* special-functions:                     The special-functions system.
+                                                                (line 6)
+* special-functions <1>:                 The special-functions package.
+                                                                (line 6)
+* System, special-functions:             The special-functions system.
+                                                                (line 6)
+
+
+
+Tag Table:
+Node: Top257
+Node: Systems706
+Node: The special-functions system924
+Ref: go to the special-functions system1068
+Node: Files2005
+Node: Lisp files2225
+Node: The special-functions․asd file2905
+Ref: go to the special-functions․asd file3120
+Node: The special-functions/pkgdcl․lisp file3272
+Ref: go to the special-functions/pkgdcl․lisp file3532
+Node: The special-functions/utils․lisp file3728
+Ref: go to the special-functions/utils․lisp file3991
+Node: The special-functions/erf․lisp file4672
+Ref: go to the special-functions/erf․lisp file4930
+Node: The special-functions/gamma․lisp file5685
+Ref: go to the special-functions/gamma․lisp file5951
+Node: The special-functions/log-gamma․lisp file6913
+Ref: go to the special-functions/log-gamma․lisp file7193
+Node: The special-functions/factorial․lisp file7523
+Ref: go to the special-functions/factorial․lisp file7755
+Node: Packages8471
+Node: The special-functions package8673
+Ref: go to the SPECIAL-FUNCTIONS package8820
+Node: Definitions11351
+Node: Exported definitions11629
+Node: Exported functions11841
+Ref: go to the SPECIAL-FUNCTIONS∶∶ERF function12009
+Ref: go to the SPECIAL-FUNCTIONS∶∶ERFC function12256
+Ref: go to the SPECIAL-FUNCTIONS∶∶FACTORIAL function12522
+Ref: go to the SPECIAL-FUNCTIONS∶∶GAMMA function12873
+Ref: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERF function13174
+Ref: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERFC function13476
+Ref: go to the SPECIAL-FUNCTIONS∶∶LOG-GAMMA function13777
+Node: Internal definitions14017
+Node: Internal constants14263
+Ref: go to the SPECIAL-FUNCTIONS∶∶+SQUARE-ROOT-2-PI+ constant14479
+Ref: go to the SPECIAL-FUNCTIONS∶∶MAXGAMD constant14694
+Ref: go to the SPECIAL-FUNCTIONS∶∶TINY constant14938
+Node: Internal special variables15132
+Ref: go to the SPECIAL-FUNCTIONS∶∶FACTORIAL-TABLE special variable15367
+Node: Internal functions15623
+Ref: go to the SPECIAL-FUNCTIONS∶∶DECODE-FLOAT64 function15808
+Ref: go to the SPECIAL-FUNCTIONS∶∶ENCODE-FLOAT64 function16119
+Ref: go to the SPECIAL-FUNCTIONS∶∶GAMMA-INVERSE-SMALL function16436
+Ref: go to the SPECIAL-FUNCTIONS∶∶GAMMA-MEDIUM function16699
+Ref: go to the SPECIAL-FUNCTIONS∶∶INVERSE-ERROR function16994
+Ref: go to the SPECIAL-FUNCTIONS∶∶RAMANUJAN function17305
+Ref: go to the SPECIAL-FUNCTIONS∶∶SAM-RAMANUJAN function17584
+Ref: go to the SPECIAL-FUNCTIONS∶∶SIGN-GAMMA function17893
+Ref: go to the SPECIAL-FUNCTIONS∶∶SIN-PI function18171
+Ref: go to the SPECIAL-FUNCTIONS∶∶STIRLING function18417
+Node: Indexes18644
+Node: Concept index18847
+Node: Function index22302
+Node: Variable index24949
+Node: Data type index25838
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

@@ -13,8 +13,8 @@
 	       (:file #:utils)
 	       (:file #:erf)
 	       (:file #:gamma)
-	       (:file #:factorial)
-	       (:file #:log-gamma))
+	       (:file #:log-gamma)
+	       (:file #:factorial))
   :in-order-to ((test-op (test-op special-functions/tests))))
 
 

@@ -6,7 +6,7 @@
 (defconstant tiny 1d-300)
 
 (defun stirling (x)
-  "Return gamma(x) for x > 13"
+  "Return (gamma x) for x > 13"
   ;; Reference: stirf in Cephes ldouble/gammal.c
   ;; gamma(x) = sqrt(2*Pi)*x^(x-0.5)*exp(-x)*(1 + 1/x * P(1/x))
   ;; 13 <= x <= 1024, relative peak error = 9.44E-21, relative error spread = 8.8E-4
@@ -128,7 +128,7 @@
       -1d0))
 
 (defun gamma (x)
-  "Return gamma(x), x <= +MAXGAMD+; NAN/RTE if x is a non-positive integer"
+  "Return gamma(x), x <= MAXGAMD; NAN/RTE if x is a non-positive integer"
   (declare (double-float x))
   (let (i (q (abs x)) z)
     (cond ((= x double-float-positive-infinity) double-float-positive-infinity)

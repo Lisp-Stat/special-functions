@@ -1,0 +1,1133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Special Functions Reference Manual</title>
+
+<meta name="description" content="The Special Functions Reference Manual, version 1.1.">
+<meta name="keywords" content="The Special Functions Reference Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="#Top" rel="start" title="Top">
+<link href="#Indexes" rel="index" title="Indexes">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="dir.html#Top" rel="up" title="(dir)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">The Special Functions Reference Manual</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span id="SEC_Contents"></span>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Systems-1" href="#Systems">1 Systems</a>
+  <ul class="no-bullet">
+    <li><a id="toc-special_002dfunctions" href="#The-special_002dfunctions-system">1.1 <tt>special-functions</tt></a></li>
+  </ul></li>
+  <li><a id="toc-Files-1" href="#Files">2 Files</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lisp" href="#Lisp-files">2.1 Lisp</a>
+    <ul class="no-bullet">
+      <li><a id="toc-special_002dfunctions_002easd" href="#The-special_002dfunctions_2024asd-file">2.1.1 <tt>special-functions.asd</tt></a></li>
+      <li><a id="toc-special_002dfunctions_002fpkgdcl_002elisp" href="#The-special_002dfunctions_002fpkgdcl_2024lisp-file">2.1.2 <tt>special-functions/pkgdcl.lisp</tt></a></li>
+      <li><a id="toc-special_002dfunctions_002futils_002elisp" href="#The-special_002dfunctions_002futils_2024lisp-file">2.1.3 <tt>special-functions/utils.lisp</tt></a></li>
+      <li><a id="toc-special_002dfunctions_002ferf_002elisp" href="#The-special_002dfunctions_002ferf_2024lisp-file">2.1.4 <tt>special-functions/erf.lisp</tt></a></li>
+      <li><a id="toc-special_002dfunctions_002fgamma_002elisp" href="#The-special_002dfunctions_002fgamma_2024lisp-file">2.1.5 <tt>special-functions/gamma.lisp</tt></a></li>
+      <li><a id="toc-special_002dfunctions_002flog_002dgamma_002elisp" href="#The-special_002dfunctions_002flog_002dgamma_2024lisp-file">2.1.6 <tt>special-functions/log-gamma.lisp</tt></a></li>
+      <li><a id="toc-special_002dfunctions_002ffactorial_002elisp" href="#The-special_002dfunctions_002ffactorial_2024lisp-file">2.1.7 <tt>special-functions/factorial.lisp</tt></a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Packages-1" href="#Packages">3 Packages</a>
+  <ul class="no-bullet">
+    <li><a id="toc-special_002dfunctions-1" href="#The-special_002dfunctions-package">3.1 <tt>special-functions</tt></a></li>
+  </ul></li>
+  <li><a id="toc-Definitions-1" href="#Definitions">4 Definitions</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Exported-definitions-1" href="#Exported-definitions">4.1 Exported definitions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Functions" href="#Exported-functions">4.1.1 Functions</a></li>
+    </ul></li>
+    <li><a id="toc-Internal-definitions-1" href="#Internal-definitions">4.2 Internal definitions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Constants" href="#Internal-constants">4.2.1 Constants</a></li>
+      <li><a id="toc-Special-variables" href="#Internal-special-variables">4.2.2 Special variables</a></li>
+      <li><a id="toc-Functions-1" href="#Internal-functions">4.2.3 Functions</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Indexes-1" href="#Indexes">Appendix A Indexes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Concepts" href="#Concept-index" rel="index">A.1 Concepts</a></li>
+    <li><a id="toc-Functions-2" href="#Function-index" rel="index">A.2 Functions</a></li>
+    <li><a id="toc-Variables" href="#Variable-index" rel="index">A.3 Variables</a></li>
+    <li><a id="toc-Data-types" href="#Data-type-index" rel="index">A.4 Data types</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="#Systems" accesskey="n" rel="next">Systems</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="The-Special-Functions-Reference-Manual"></span><h1 class="top">The Special Functions Reference Manual</h1>
+<p>This is the Special Functions Reference Manual, version 1.1.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Systems" accesskey="1">Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The systems documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Files" accesskey="2">Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The files documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Packages" accesskey="3">Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The packages documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Definitions" accesskey="4">Definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The symbols documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Indexes" accesskey="5">Indexes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Concepts, functions, variables and data types
+</td></tr>
+</table>
+
+
+
+<hr>
+<span id="Systems"></span><div class="header">
+<p>
+Next: <a href="#Files" accesskey="n" rel="next">Files</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Systems-1"></span><h2 class="chapter">1 Systems</h2>
+<p>The main system appears first, followed by any subsystem dependency.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions-system" accesskey="1">The special-functions system</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="The-special_002dfunctions-system"></span><div class="header">
+<p>
+Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="#Systems" accesskey="u" rel="up">Systems</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions"></span><h3 class="section">1.1 <tt>special-functions</tt></h3>
+<span id="go-to-the-special_002dfunctions-system"></span><span id="index-special_002dfunctions"></span>
+<span id="index-System_002c-special_002dfunctions"></span>
+<dl compact="compact">
+<dt><strong>Author</strong></dt>
+<dd><p>Steve Nunez &lt;<a href="mailto:steve@symbolics.tech">steve@symbolics.tech</a>&gt;
+</p></dd>
+<dt><strong>License</strong></dt>
+<dd><p>MS-PL
+</p></dd>
+<dt><strong>Description</strong></dt>
+<dd><p>Special functions in Common Lisp
+</p></dd>
+<dt><strong>Version</strong></dt>
+<dd><p>1.1
+</p></dd>
+<dt><strong>Dependencies</strong></dt>
+<dd><ul>
+<li> <tt>num-utils</tt>
+</li><li> <tt>float-features</tt>
+</li></ul>
+</dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_2024asd-file"><tt>special-functions.asd</tt></a> (file)
+</p></dd>
+<dt><strong>Directory</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/"><tt>s:/src/special-functions/</tt></a>
+</p></dd>
+<dt><strong>Components</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-special_002dfunctions_002fpkgdcl_2024lisp-file"><tt>pkgdcl.lisp</tt></a> (file)
+</li><li> <a href="#go-to-the-special_002dfunctions_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+</li><li> <a href="#go-to-the-special_002dfunctions_002ferf_2024lisp-file"><tt>erf.lisp</tt></a> (file)
+</li><li> <a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</li><li> <a href="#go-to-the-special_002dfunctions_002flog_002dgamma_2024lisp-file"><tt>log-gamma.lisp</tt></a> (file)
+</li><li> <a href="#go-to-the-special_002dfunctions_002ffactorial_2024lisp-file"><tt>factorial.lisp</tt></a> (file)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Files"></span><div class="header">
+<p>
+Next: <a href="#Packages" accesskey="n" rel="next">Packages</a>, Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Files-1"></span><h2 class="chapter">2 Files</h2>
+<p>Files are sorted by type and then listed depth-first from the systems
+components trees.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Lisp-files" accesskey="1">Lisp files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Lisp-files"></span><div class="header">
+<p>
+Previous: <a href="#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="#Files" accesskey="u" rel="up">Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Lisp"></span><h3 class="section">2.1 Lisp</h3>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions_2024asd-file" accesskey="1">The special-functions.asd file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions_002fpkgdcl_2024lisp-file" accesskey="2">The special-functions/pkgdcl.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions_002futils_2024lisp-file" accesskey="3">The special-functions/utils.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions_002ferf_2024lisp-file" accesskey="4">The special-functions/erf.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions_002fgamma_2024lisp-file" accesskey="5">The special-functions/gamma.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions_002flog_002dgamma_2024lisp-file" accesskey="6">The special-functions/log-gamma.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions_002ffactorial_2024lisp-file" accesskey="7">The special-functions/factorial.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="The-special_002dfunctions_2024asd-file"></span><div class="header">
+<p>
+Next: <a href="#The-special_002dfunctions_002fpkgdcl_2024lisp-file" accesskey="n" rel="next">The special-functions/pkgdcl․lisp file</a>, Previous: <a href="#Lisp-files" accesskey="p" rel="prev">Lisp files</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions_002easd"></span><h4 class="subsection">2.1.1 <tt>special-functions.asd</tt></h4>
+<span id="go-to-the-special_002dfunctions_2024asd-file"></span><span id="index-special_002dfunctions_002easd"></span>
+<span id="index-Lisp-File_002c-special_002dfunctions_002easd"></span>
+<span id="index-File_002c-Lisp_002c-special_002dfunctions_002easd"></span>
+<dl compact="compact">
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/special-functions.asd"><tt>/src/special-functions/special-functions.asd</tt></a>
+</p></dd>
+<dt><strong>Systems</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions-system"><tt>special-functions</tt></a> (system)
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-special_002dfunctions_002fpkgdcl_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="#The-special_002dfunctions_002futils_2024lisp-file" accesskey="n" rel="next">The special-functions/utils․lisp file</a>, Previous: <a href="#The-special_002dfunctions_2024asd-file" accesskey="p" rel="prev">The special-functions․asd file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions_002fpkgdcl_002elisp"></span><h4 class="subsection">2.1.2 <tt>special-functions/pkgdcl.lisp</tt></h4>
+<span id="go-to-the-special_002dfunctions_002fpkgdcl_2024lisp-file"></span><span id="index-special_002dfunctions_002fpkgdcl_002elisp"></span>
+<span id="index-Lisp-File_002c-special_002dfunctions_002fpkgdcl_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-special_002dfunctions_002fpkgdcl_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions-system"><tt>special-functions</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/src/pkgdcl.lisp"><tt>pkgdcl.lisp</tt></a>
+</p></dd>
+<dt><strong>Packages</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-special_002dfunctions_002futils_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="#The-special_002dfunctions_002ferf_2024lisp-file" accesskey="n" rel="next">The special-functions/erf․lisp file</a>, Previous: <a href="#The-special_002dfunctions_002fpkgdcl_2024lisp-file" accesskey="p" rel="prev">The special-functions/pkgdcl․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions_002futils_002elisp"></span><h4 class="subsection">2.1.3 <tt>special-functions/utils.lisp</tt></h4>
+<span id="go-to-the-special_002dfunctions_002futils_2024lisp-file"></span><span id="index-special_002dfunctions_002futils_002elisp"></span>
+<span id="index-Lisp-File_002c-special_002dfunctions_002futils_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-special_002dfunctions_002futils_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fpkgdcl_2024lisp-file"><tt>pkgdcl.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions-system"><tt>special-functions</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/src/utils.lisp"><tt>utils.lisp</tt></a>
+</p></dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236_002bSQUARE_002dROOT_002d2_002dPI_002b-constant"><tt>+square-root-2-pi+</tt></a> (constant)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236DECODE_002dFLOAT64-function"><tt>decode-float64</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ENCODE_002dFLOAT64-function"><tt>encode-float64</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SIN_002dPI-function"><tt>sin-pi</tt></a> (function)
+</li></ul>
+</dd>
+</dl>
+
+<hr>
+<span id="The-special_002dfunctions_002ferf_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="#The-special_002dfunctions_002fgamma_2024lisp-file" accesskey="n" rel="next">The special-functions/gamma․lisp file</a>, Previous: <a href="#The-special_002dfunctions_002futils_2024lisp-file" accesskey="p" rel="prev">The special-functions/utils․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions_002ferf_002elisp"></span><h4 class="subsection">2.1.4 <tt>special-functions/erf.lisp</tt></h4>
+<span id="go-to-the-special_002dfunctions_002ferf_2024lisp-file"></span><span id="index-special_002dfunctions_002ferf_002elisp"></span>
+<span id="index-Lisp-File_002c-special_002dfunctions_002ferf_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-special_002dfunctions_002ferf_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions-system"><tt>special-functions</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/src/erf.lisp"><tt>erf.lisp</tt></a>
+</p></dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ERF-function"><tt>erf</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ERFC-function"><tt>erfc</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERF-function"><tt>inverse-erf</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERFC-function"><tt>inverse-erfc</tt></a> (function)
+</li></ul>
+</dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERROR-function"><tt>inverse-error</tt></a> (function)
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-special_002dfunctions_002fgamma_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="#The-special_002dfunctions_002flog_002dgamma_2024lisp-file" accesskey="n" rel="next">The special-functions/log-gamma․lisp file</a>, Previous: <a href="#The-special_002dfunctions_002ferf_2024lisp-file" accesskey="p" rel="prev">The special-functions/erf․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions_002fgamma_002elisp"></span><h4 class="subsection">2.1.5 <tt>special-functions/gamma.lisp</tt></h4>
+<span id="go-to-the-special_002dfunctions_002fgamma_2024lisp-file"></span><span id="index-special_002dfunctions_002fgamma_002elisp"></span>
+<span id="index-Lisp-File_002c-special_002dfunctions_002fgamma_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-special_002dfunctions_002fgamma_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ferf_2024lisp-file"><tt>erf.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions-system"><tt>special-functions</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/src/gamma.lisp"><tt>gamma.lisp</tt></a>
+</p></dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA-function"><tt>gamma</tt></a> (function)
+</p></dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA_002dINVERSE_002dSMALL-function"><tt>gamma-inverse-small</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA_002dMEDIUM-function"><tt>gamma-medium</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236MAXGAMD-constant"><tt>maxgamd</tt></a> (constant)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SIGN_002dGAMMA-function"><tt>sign-gamma</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236STIRLING-function"><tt>stirling</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236TINY-constant"><tt>tiny</tt></a> (constant)
+</li></ul>
+</dd>
+</dl>
+
+<hr>
+<span id="The-special_002dfunctions_002flog_002dgamma_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="#The-special_002dfunctions_002ffactorial_2024lisp-file" accesskey="n" rel="next">The special-functions/factorial․lisp file</a>, Previous: <a href="#The-special_002dfunctions_002fgamma_2024lisp-file" accesskey="p" rel="prev">The special-functions/gamma․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions_002flog_002dgamma_002elisp"></span><h4 class="subsection">2.1.6 <tt>special-functions/log-gamma.lisp</tt></h4>
+<span id="go-to-the-special_002dfunctions_002flog_002dgamma_2024lisp-file"></span><span id="index-special_002dfunctions_002flog_002dgamma_002elisp"></span>
+<span id="index-Lisp-File_002c-special_002dfunctions_002flog_002dgamma_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-special_002dfunctions_002flog_002dgamma_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions-system"><tt>special-functions</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/src/log-gamma.lisp"><tt>log-gamma.lisp</tt></a>
+</p></dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236LOG_002dGAMMA-function"><tt>log-gamma</tt></a> (function)
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-special_002dfunctions_002ffactorial_2024lisp-file"></span><div class="header">
+<p>
+Previous: <a href="#The-special_002dfunctions_002flog_002dgamma_2024lisp-file" accesskey="p" rel="prev">The special-functions/log-gamma․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions_002ffactorial_002elisp"></span><h4 class="subsection">2.1.7 <tt>special-functions/factorial.lisp</tt></h4>
+<span id="go-to-the-special_002dfunctions_002ffactorial_2024lisp-file"></span><span id="index-special_002dfunctions_002ffactorial_002elisp"></span>
+<span id="index-Lisp-File_002c-special_002dfunctions_002ffactorial_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-special_002dfunctions_002ffactorial_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002flog_002dgamma_2024lisp-file"><tt>log-gamma.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions-system"><tt>special-functions</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/special-functions/src/factorial.lisp"><tt>factorial.lisp</tt></a>
+</p></dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236FACTORIAL-function"><tt>factorial</tt></a> (function)
+</p></dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236FACTORIAL_002dTABLE-special-variable"><tt>factorial-table</tt></a> (special variable)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236RAMANUJAN-function"><tt>ramanujan</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SAM_002dRAMANUJAN-function"><tt>sam-ramanujan</tt></a> (function)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Packages"></span><div class="header">
+<p>
+Next: <a href="#Definitions" accesskey="n" rel="next">Definitions</a>, Previous: <a href="#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Packages-1"></span><h2 class="chapter">3 Packages</h2>
+<p>Packages are listed by definition order.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#The-special_002dfunctions-package" accesskey="1">The special-functions package</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="The-special_002dfunctions-package"></span><div class="header">
+<p>
+Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="#Packages" accesskey="u" rel="up">Packages</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="special_002dfunctions-1"></span><h3 class="section">3.1 <tt>special-functions</tt></h3>
+<span id="go-to-the-SPECIAL_002dFUNCTIONS-package"></span><span id="index-special_002dfunctions-1"></span>
+<span id="index-Package_002c-special_002dfunctions"></span>
+<dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fpkgdcl_2024lisp-file"><tt>pkgdcl.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Nicknames</strong></dt>
+<dd><ul>
+<li> <tt>specfun</tt>
+</li><li> <tt>spfn</tt>
+</li></ul>
+</dd>
+<dt><strong>Use List</strong></dt>
+<dd><ul>
+<li> <tt>num-utils.arithmetic</tt>
+</li><li> <tt>num-utils.polynomial</tt>
+</li><li> <tt>common-lisp</tt>
+</li></ul>
+</dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ERF-function"><tt>erf</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ERFC-function"><tt>erfc</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236FACTORIAL-function"><tt>factorial</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA-function"><tt>gamma</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERF-function"><tt>inverse-erf</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERFC-function"><tt>inverse-erfc</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236LOG_002dGAMMA-function"><tt>log-gamma</tt></a> (function)
+</li></ul>
+</dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236_002bSQUARE_002dROOT_002d2_002dPI_002b-constant"><tt>+square-root-2-pi+</tt></a> (constant)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236DECODE_002dFLOAT64-function"><tt>decode-float64</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ENCODE_002dFLOAT64-function"><tt>encode-float64</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236FACTORIAL_002dTABLE-special-variable"><tt>factorial-table</tt></a> (special variable)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA_002dINVERSE_002dSMALL-function"><tt>gamma-inverse-small</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA_002dMEDIUM-function"><tt>gamma-medium</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERROR-function"><tt>inverse-error</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236MAXGAMD-constant"><tt>maxgamd</tt></a> (constant)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236RAMANUJAN-function"><tt>ramanujan</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SAM_002dRAMANUJAN-function"><tt>sam-ramanujan</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SIGN_002dGAMMA-function"><tt>sign-gamma</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SIN_002dPI-function"><tt>sin-pi</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236STIRLING-function"><tt>stirling</tt></a> (function)
+</li><li> <a href="#go-to-the-SPECIAL_002dFUNCTIONS_2236_2236TINY-constant"><tt>tiny</tt></a> (constant)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Definitions"></span><div class="header">
+<p>
+Next: <a href="#Indexes" accesskey="n" rel="next">Indexes</a>, Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Definitions-1"></span><h2 class="chapter">4 Definitions</h2>
+<p>Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Exported-definitions" accesskey="1">Exported definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Internal-definitions" accesskey="2">Internal definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Exported-definitions"></span><div class="header">
+<p>
+Next: <a href="#Internal-definitions" accesskey="n" rel="next">Internal definitions</a>, Previous: <a href="#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Exported-definitions-1"></span><h3 class="section">4.1 Exported definitions</h3>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Exported-functions" accesskey="1">Exported functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Exported-functions"></span><div class="header">
+<p>
+Previous: <a href="#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="#Exported-definitions" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions"></span><h4 class="subsection">4.1.1 Functions</h4>
+<dl>
+<dt id="index-erf">Function: <strong>erf</strong> <em>N</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ERF-function"></span><span id="index-Function_002c-erf"></span>
+<p>Returns the error function of n
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ferf_2024lisp-file"><tt>erf.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-erfc">Function: <strong>erfc</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ERFC-function"></span><span id="index-Function_002c-erfc"></span>
+<p>Returns the complementary error function of x
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ferf_2024lisp-file"><tt>erf.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-factorial">Function: <strong>factorial</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236FACTORIAL-function"></span><span id="index-Function_002c-factorial"></span>
+<p>Return the factorial value X! for X &lt;= MAX-FACTORIAL; DOUBLE-FLOAT-POSITIVE-INFINITY if x &lt; 0. X must be an INTEGER.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ffactorial_2024lisp-file"><tt>factorial.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-gamma">Function: <strong>gamma</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA-function"></span><span id="index-Function_002c-gamma"></span>
+<p>Return gamma(x), x &lt;= MAXGAMD; NAN/RTE if x is a non-positive integer
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-inverse_002derf">Function: <strong>inverse-erf</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERF-function"></span><span id="index-Function_002c-inverse_002derf"></span>
+<p>Return the inverse function of erf: (erf (inverse-erf x)) = x, -1 &lt; x &lt; 1
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ferf_2024lisp-file"><tt>erf.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-inverse_002derfc">Function: <strong>inverse-erfc</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERFC-function"></span><span id="index-Function_002c-inverse_002derfc"></span>
+<p>Return the inverse function of erfc: (erfc (inverse-erfc x)) = x, 0 &lt; x &lt; 2
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ferf_2024lisp-file"><tt>erf.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-log_002dgamma">Function: <strong>log-gamma</strong> <em>N</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236LOG_002dGAMMA-function"></span><span id="index-Function_002c-log_002dgamma"></span>
+<p>Return the logarithm of gamma(x)
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002flog_002dgamma_2024lisp-file"><tt>log-gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+
+<hr>
+<span id="Internal-definitions"></span><div class="header">
+<p>
+Previous: <a href="#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Internal-definitions-1"></span><h3 class="section">4.2 Internal definitions</h3>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Internal-constants" accesskey="1">Internal constants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Internal-special-variables" accesskey="2">Internal special variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Internal-functions" accesskey="3">Internal functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Internal-constants"></span><div class="header">
+<p>
+Next: <a href="#Internal-special-variables" accesskey="n" rel="next">Internal special variables</a>, Previous: <a href="#Internal-definitions" accesskey="p" rel="prev">Internal definitions</a>, Up: <a href="#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Constants"></span><h4 class="subsection">4.2.1 Constants</h4>
+<dl>
+<dt id="index-_002bsquare_002droot_002d2_002dpi_002b">Constant: <strong>+square-root-2-pi+</strong></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236_002bSQUARE_002dROOT_002d2_002dPI_002b-constant"></span><span id="index-Constant_002c-_002bsquare_002droot_002d2_002dpi_002b"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-maxgamd">Constant: <strong>maxgamd</strong></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236MAXGAMD-constant"></span><span id="index-Constant_002c-maxgamd"></span>
+<p>Maximum argument for gamma
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-tiny">Constant: <strong>tiny</strong></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236TINY-constant"></span><span id="index-Constant_002c-tiny"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Internal-special-variables"></span><div class="header">
+<p>
+Next: <a href="#Internal-functions" accesskey="n" rel="next">Internal functions</a>, Previous: <a href="#Internal-constants" accesskey="p" rel="prev">Internal constants</a>, Up: <a href="#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Special-variables"></span><h4 class="subsection">4.2.2 Special variables</h4>
+<dl>
+<dt id="index-factorial_002dtable">Special Variable: <strong>factorial-table</strong></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236FACTORIAL_002dTABLE-special-variable"></span><span id="index-Special-Variable_002c-factorial_002dtable"></span>
+<p>Table of factorials for integer values up to 100
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ffactorial_2024lisp-file"><tt>factorial.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Internal-functions"></span><div class="header">
+<p>
+Previous: <a href="#Internal-special-variables" accesskey="p" rel="prev">Internal special variables</a>, Up: <a href="#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions-1"></span><h4 class="subsection">4.2.3 Functions</h4>
+<dl>
+<dt id="index-decode_002dfloat64">Function: <strong>decode-float64</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236DECODE_002dFLOAT64-function"></span><span id="index-Function_002c-decode_002dfloat64"></span>
+<p>Convert the (unsigned-byte 64) bit representation into a native double-float
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-encode_002dfloat64">Function: <strong>encode-float64</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236ENCODE_002dFLOAT64-function"></span><span id="index-Function_002c-encode_002dfloat64"></span>
+<p>Returns the bit representation of the double-float X as an (unsigned-byte 64)
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-gamma_002dinverse_002dsmall">Function: <strong>gamma-inverse-small</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA_002dINVERSE_002dSMALL-function"></span><span id="index-Function_002c-gamma_002dinverse_002dsmall"></span>
+<p>Return 1/gamma(x) for |x| &lt; 0.03125
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-gamma_002dmedium">Function: <strong>gamma-medium</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236GAMMA_002dMEDIUM-function"></span><span id="index-Function_002c-gamma_002dmedium"></span>
+<p>Return gamma(x), |x| &lt;= 13, x negative integer produces div by 0
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-inverse_002derror">Function: <strong>inverse-error</strong> <em>P Q</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236INVERSE_002dERROR-function"></span><span id="index-Function_002c-inverse_002derror"></span>
+<p>Return value of inverse error function: erf_inv(p) if p &lt;= 0.5, erfc_inv(q) otherwise
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ferf_2024lisp-file"><tt>erf.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-ramanujan">Function: <strong>ramanujan</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236RAMANUJAN-function"></span><span id="index-Function_002c-ramanujan"></span>
+<p>Ramanujan&rsquo;s original approximation of n!
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ffactorial_2024lisp-file"><tt>factorial.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-sam_002dramanujan">Function: <strong>sam-ramanujan</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SAM_002dRAMANUJAN-function"></span><span id="index-Function_002c-sam_002dramanujan"></span>
+<p>Modification of Ramanujan&rsquo;s approximation of n! by Sidney A. Morris
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002ffactorial_2024lisp-file"><tt>factorial.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-sign_002dgamma">Function: <strong>sign-gamma</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SIGN_002dGAMMA-function"></span><span id="index-Function_002c-sign_002dgamma"></span>
+<p>Return sign(gamma(x)), invalid for 0 or negative integer
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-sin_002dpi">Function: <strong>sin-pi</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236SIN_002dPI-function"></span><span id="index-Function_002c-sin_002dpi"></span>
+<p>Returns (sin (* pi x))
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-stirling">Function: <strong>stirling</strong> <em>X</em></dt>
+<dd><span id="go-to-the-SPECIAL_002dFUNCTIONS_2236_2236STIRLING-function"></span><span id="index-Function_002c-stirling"></span>
+<p>Return (gamma x) for x &gt; 13
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-SPECIAL_002dFUNCTIONS-package"><tt>special-functions</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-special_002dfunctions_002fgamma_2024lisp-file"><tt>gamma.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+
+
+<hr>
+<span id="Indexes"></span><div class="header">
+<p>
+Previous: <a href="#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Indexes-1"></span><h2 class="appendix">Appendix A Indexes</h2>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Concept-index" rel="index" accesskey="1">Concept index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Function-index" rel="index" accesskey="2">Function index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Variable-index" rel="index" accesskey="3">Variable index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Data-type-index" rel="index" accesskey="4">Data type index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Concept-index"></span><div class="header">
+<p>
+Next: <a href="#Function-index" accesskey="n" rel="next">Function index</a>, Previous: <a href="#Indexes" accesskey="p" rel="prev">Indexes</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Concepts"></span><h3 class="appendixsec">A.1 Concepts</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-special_002dfunctions_002easd">File, Lisp, <tt>special-functions.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_2024asd-file">The special-functions․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-special_002dfunctions_002ferf_002elisp">File, Lisp, <tt>special-functions/erf.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002ferf_2024lisp-file">The special-functions/erf․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-special_002dfunctions_002ffactorial_002elisp">File, Lisp, <tt>special-functions/factorial.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002ffactorial_2024lisp-file">The special-functions/factorial․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-special_002dfunctions_002fgamma_002elisp">File, Lisp, <tt>special-functions/gamma.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002fgamma_2024lisp-file">The special-functions/gamma․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-special_002dfunctions_002flog_002dgamma_002elisp">File, Lisp, <tt>special-functions/log-gamma.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002flog_002dgamma_2024lisp-file">The special-functions/log-gamma․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-special_002dfunctions_002fpkgdcl_002elisp">File, Lisp, <tt>special-functions/pkgdcl.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002fpkgdcl_2024lisp-file">The special-functions/pkgdcl․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-special_002dfunctions_002futils_002elisp">File, Lisp, <tt>special-functions/utils.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002futils_2024lisp-file">The special-functions/utils․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-L">L</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-special_002dfunctions_002easd">Lisp File, <tt>special-functions.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_2024asd-file">The special-functions․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-special_002dfunctions_002ferf_002elisp">Lisp File, <tt>special-functions/erf.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002ferf_2024lisp-file">The special-functions/erf․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-special_002dfunctions_002ffactorial_002elisp">Lisp File, <tt>special-functions/factorial.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002ffactorial_2024lisp-file">The special-functions/factorial․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-special_002dfunctions_002fgamma_002elisp">Lisp File, <tt>special-functions/gamma.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002fgamma_2024lisp-file">The special-functions/gamma․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-special_002dfunctions_002flog_002dgamma_002elisp">Lisp File, <tt>special-functions/log-gamma.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002flog_002dgamma_2024lisp-file">The special-functions/log-gamma․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-special_002dfunctions_002fpkgdcl_002elisp">Lisp File, <tt>special-functions/pkgdcl.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002fpkgdcl_2024lisp-file">The special-functions/pkgdcl․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-special_002dfunctions_002futils_002elisp">Lisp File, <tt>special-functions/utils.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002futils_2024lisp-file">The special-functions/utils․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions_002easd"><tt>special-functions.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_2024asd-file">The special-functions․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions_002ferf_002elisp"><tt>special-functions/erf.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002ferf_2024lisp-file">The special-functions/erf․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions_002ffactorial_002elisp"><tt>special-functions/factorial.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002ffactorial_2024lisp-file">The special-functions/factorial․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions_002fgamma_002elisp"><tt>special-functions/gamma.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002fgamma_2024lisp-file">The special-functions/gamma․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions_002flog_002dgamma_002elisp"><tt>special-functions/log-gamma.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002flog_002dgamma_2024lisp-file">The special-functions/log-gamma․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions_002fpkgdcl_002elisp"><tt>special-functions/pkgdcl.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002fpkgdcl_2024lisp-file">The special-functions/pkgdcl․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions_002futils_002elisp"><tt>special-functions/utils.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions_002futils_2024lisp-file">The special-functions/utils․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+
+
+
+<hr>
+<span id="Function-index"></span><div class="header">
+<p>
+Next: <a href="#Variable-index" accesskey="n" rel="next">Variable index</a>, Previous: <a href="#Concept-index" accesskey="p" rel="prev">Concept index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions-2"></span><h3 class="appendixsec">A.2 Functions</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-decode_002dfloat64"><code>decode-float64</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-E">E</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-encode_002dfloat64"><code>encode-float64</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-erf"><code>erf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-erfc"><code>erfc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-factorial"><code>factorial</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-decode_002dfloat64"><code><span class="roman">Function, </span>decode-float64</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-encode_002dfloat64"><code><span class="roman">Function, </span>encode-float64</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-erf"><code><span class="roman">Function, </span>erf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-erfc"><code><span class="roman">Function, </span>erfc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-factorial"><code><span class="roman">Function, </span>factorial</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-gamma"><code><span class="roman">Function, </span>gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-gamma_002dinverse_002dsmall"><code><span class="roman">Function, </span>gamma-inverse-small</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-gamma_002dmedium"><code><span class="roman">Function, </span>gamma-medium</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-inverse_002derf"><code><span class="roman">Function, </span>inverse-erf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-inverse_002derfc"><code><span class="roman">Function, </span>inverse-erfc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-inverse_002derror"><code><span class="roman">Function, </span>inverse-error</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-log_002dgamma"><code><span class="roman">Function, </span>log-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-ramanujan"><code><span class="roman">Function, </span>ramanujan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sam_002dramanujan"><code><span class="roman">Function, </span>sam-ramanujan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sign_002dgamma"><code><span class="roman">Function, </span>sign-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sin_002dpi"><code><span class="roman">Function, </span>sin-pi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-stirling"><code><span class="roman">Function, </span>stirling</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-G">G</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gamma"><code>gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gamma_002dinverse_002dsmall"><code>gamma-inverse-small</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gamma_002dmedium"><code>gamma-medium</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-I">I</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-inverse_002derf"><code>inverse-erf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-inverse_002derfc"><code>inverse-erfc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-inverse_002derror"><code>inverse-error</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-L">L</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-log_002dgamma"><code>log-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-R">R</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ramanujan"><code>ramanujan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sam_002dramanujan"><code>sam-ramanujan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sign_002dgamma"><code>sign-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sin_002dpi"><code>sin-pi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-stirling"><code>stirling</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+
+
+
+<hr>
+<span id="Variable-index"></span><div class="header">
+<p>
+Next: <a href="#Data-type-index" accesskey="n" rel="next">Data type index</a>, Previous: <a href="#Function-index" accesskey="p" rel="prev">Function index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Variables"></span><h3 class="appendixsec">A.3 Variables</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-index_vr_symbol-1"><b>+</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Variable-index_vr_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-T"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-vr" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_symbol-1">+</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002bsquare_002droot_002d2_002dpi_002b"><code>+square-root-2-pi+</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-constants">Internal constants</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Constant_002c-_002bsquare_002droot_002d2_002dpi_002b"><code><span class="roman">Constant, </span>+square-root-2-pi+</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-constants">Internal constants</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Constant_002c-maxgamd"><code><span class="roman">Constant, </span>maxgamd</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-constants">Internal constants</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Constant_002c-tiny"><code><span class="roman">Constant, </span>tiny</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-constants">Internal constants</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-factorial_002dtable"><code>factorial-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-M">M</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-maxgamd"><code>maxgamd</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-constants">Internal constants</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Special-Variable_002c-factorial_002dtable"><code><span class="roman">Special Variable, </span>factorial-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-T">T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tiny"><code>tiny</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-constants">Internal constants</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-index_vr_symbol-1"><b>+</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Variable-index_vr_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-index_vr_letter-T"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+
+
+
+<hr>
+<span id="Data-type-index"></span><div class="header">
+<p>
+Previous: <a href="#Variable-index" accesskey="p" rel="prev">Variable index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Data-types"></span><h3 class="appendixsec">A.4 Data types</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-tp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Package_002c-special_002dfunctions"><code><span class="roman">Package, </span>special-functions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions-package">The special-functions package</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions"><code>special-functions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions-system">The special-functions system</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-special_002dfunctions-1"><code>special-functions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions-package">The special-functions package</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-System_002c-special_002dfunctions"><code><span class="roman">System, </span>special-functions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-special_002dfunctions-system">The special-functions system</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr>
+
+
+
+</body>
+</html>
