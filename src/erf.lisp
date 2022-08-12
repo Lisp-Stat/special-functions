@@ -8,6 +8,7 @@
 #| References
 [1] Boost C++ Libraries, Release 1.69 (2020) http://www.boost.org/
 [2] Openlibm mathematical library, Release 0.7.3 (2020) https://openlibm.org/
+[3] DAMath, https://github.com/CMCHTPC/ChromaPrint
 |#
 
 ;;;
@@ -349,7 +350,7 @@ See: https://github.com/JuliaMath/openlibm/blob/master/src/s_erf.c
 	   	erfc/erf(NaN) is NaN
 |#
 
-(let (;;(tiny 1d-300)
+(let (;(tiny 1d-300)
       (very-tiny 2.848094538889218D-306) ;; 0x0080000000000000
       (small (expt 2.0d0 -28))
 
@@ -399,7 +400,7 @@ See: https://github.com/JuliaMath/openlibm/blob/master/src/s_erf.c
 		      :element-type 'double-float))
 
 
-      ;; Coefficients for approximation to erf in [1.25,1/0.35]
+      ;; Coefficients for approximation to erfc in [1.25,1/0.35]
 
       (ra (make-array 8
 		      :initial-contents '(-9.81432934416914548592d+00
@@ -423,7 +424,7 @@ See: https://github.com/JuliaMath/openlibm/blob/master/src/s_erf.c
 					   1d0)
 		      :element-type 'double-float))
 
-      ;; Coefficients for approximation to erf in [1/.35,28]
+      ;; Coefficients for approximation to erfc in [1/.35,28]
 
       (rb (make-array 7
 		      :initial-contents '(-4.83519191608651397019d+02
@@ -485,73 +486,89 @@ See: https://github.com/JuliaMath/openlibm/blob/master/src/s_erf.c
 			  (- (1- (/ j x)))))
 	       ((>= x 6) 1)))))
 
-
-  (defun erfc (x)
-    "Returns the complementary error function of x"
-    (cond ((<= x -6.0D0) 2.0D0)
-	  (t (- 1.0D0 (erf x)))))
+  )					;let
 
 
-  ;;; erfc-1 follows the implemention of erfc in openlibm, however the
-  ;;; results match openlibm only in the first 4-8 digits for the
-  ;;; intervals 1/0.35 < |x| < 6.0. The only difference I can see is
-  ;;; the 2.0 subtraction. When using the definition above for erfc,
-  ;;; we can match openlibm's erfc exactly. The other intervals match
-  ;;; exactly.
+;;;
+;;; Complement of erf
+;;;
 
-#+nil
-  (defun erfc-1 (n)
-    "Returns the complementary error function of n"
-    ;; Note we 'unravel' the code intervals of openlibm at some points to make them clearer
-    (declare (double-float n)) ; This is good for type checking, but means we can't use IEEE-FLOATS
-    (let ((x (abs n)))
-      (cond ((< x -6.0D0)  2.0D0)
-	    ((< x tiny)    (1+ x))
-	    ((< x 0.84375) (let* ((z (* x x))
-				  (r (evaluate-polynomial pp z))
-				  (s (1+ (evaluate-polynomial qq z)))
-				  (y (/ r s))
-				  (temp (if (< x (/ 1 4))
-					    (+ x (* x y)) ; |x| < 1/4
-					    (+ 0.5D0 (+ (* x y) ; 1/4 <= |x| < 0.84375
-							(- x 0.5D0))))))
-			     (if (minusp (float-sign n))
-			     	 (+ 1 temp)
-			     	 (- 1 temp))))
-	    ((< x 1.25) (let* ((s (1- x)) ; 0.84375 <= |x| < 1.25
-			       (p (evaluate-polynomial pa s))
-			       (q (1+ (evaluate-polynomial qa s))))
-			  (if (minusp (float-sign n))
-			      (+ 1 erx (/ p q))
-			      (- 1 erx (/ p q)))))
-	    ((< x (/ 1 0.35d0)) (let* ((s (/ 1 (* x x))) ; 1.25 <= |x| < 1 / 0.35  ~ 2.857143
-				       (r (evaluate-polynomial ra s))
-				       (i (1+ (evaluate-polynomial sa s))) ; The openlibm code reuses same variable with different case
-				       (mask #xffffffff00000000) ; bit mask to zero lower word
-				       (z (decode-float64 (logand (encode-float64 x) mask)))
-				       (j (* (exp (- (* (- z) z)
-						     0.5625))
-					     (exp (+ (* (- z x) (+ z x))
-						     (/ r i))))))
-				  (declare (double-float s r i z j)) ; no effect
-				  (if (minusp (float-sign n))
-				      (- 2.00000000000000000000D00 (/ j x))
-				      (/ j x))
-				  ))
-	    ((< x 28) (let* ((s (/ 1 (* x x)))  ; 2.857143 < |x| < 6.0
-			    ;; Code duplication noted but retained to avoid function call overhead
-			    (r (evaluate-polynomial rb s))
-			    (i (1+ (evaluate-polynomial sb s)))
-			    (mask #xffffffff00000000) ; bit mask to zero lower word
-			    (z (decode-float64 (logand (encode-float64 x) mask)))
-			    (j (* (exp (- (* (- z) z)
-					  0.5625))
-				  (exp (+ (* (- z x) (+ z x))
-					  (/ r i))))))
-		       (if (minusp (float-sign n))
-			   (- 2.00000000000000000000D00 (/ j x))
-			   (/ j x))
-		       ))
-  	       ))))
+;;; From Ehrhardt [3], in turn derived from Cephes
+
+(defun erfc-scaled (x)
+  "p/q := exp(x^2)*erfc(x), 1<=x<=128"
+  (declare (double-float x))
+  (let (;;erfc(x) = exp(-x^2)*P(1/x)/Q(1/x), 1/8<=1/x<=1, Peak relative error 5.8e-21
+	(pp (make-array 10
+			:initial-contents '(1.130609921802431462353D+9
+					    2.290171954844785638925D+9
+					    2.295563412811856278515D+9
+					    1.448651275892911637208D+9
+					    6.234814405521647580919D+8
+					    1.870095071120436715930D+8
+					    3.833161455208142870198D+7
+					    4.964439504376477951135D+6
+					    3.198859502299390825278D+5
+					    -9.085943037416544232472D-6)
+			:element-type 'double-float))
+	(qq (make-array 11
+			:initial-contents '(1d0
+					    1.130609910594093747762D9
+					    3.565928696567031388910D9
+					    5.188672873106859049556D9
+					    4.588018188918609726890D9
+					    2.729005809811924550999D9
+					    1.138778654945478547049D9
+					    3.358653716579278063988D8
+					    6.822450775590265689648D7
+					    8.799239977351261077610D6
+					    5.669830829076399819566D5)
+			:element-type 'double-float))
+
+	;; erfc(x) = exp(-x^2)*1/x*R(1/x^2)/S(1/x^2), 1/128<=1/x<1/8, Peak relative error 1.9e-21
+	(rr (make-array 5
+			:initial-contents '(3.621349282255624026891D0
+					    7.173690522797138522298D0
+					    3.445028155383625172464D0
+					    5.537445669807799246891D-1
+					    2.697535671015506686136D-2)
+			:element-type 'double-float))
+	(ss (make-array 6
+			:initial-contents '(1d0
+					    1.072884067182663823072D1
+					    1.533713447609627196926D1
+					    6.572990478128949439509D0
+					    1.005392977603322982436D0
+					    4.781257488046430019872D-2)
+			:element-type 'double-float))
+	(y (/ x))
+	p q)
+    (if (< x 8)
+	(setf p (evaluate-polynomial pp y)
+	      q (evaluate-polynomial qq y))
+	(setf q (square y)
+	      p (* y
+		   (evaluate-polynomial rr q))
+	      q (evaluate-polynomial ss q)))
+    (values p q)))
+
+(defun erfc (x)
+  "Return the complementary error function erfc(x) = 1-erf(x)"
+  (declare (double-float x))
+  (let ((a (abs x))
+	p q z)
+     (cond ((eql x double-float-positive-infinity) 0d0)
+	   ((eql x double-float-negative-infinity) 2d0)
+	   ((< a 1) (- 1 (erf x)))
+	   ((< x -7) 2d0)
+	   ((> x 106.8) 0d0)
+	   (t ; -7 < x < -1 OR 1 < x < 107
+	    (multiple-value-setq (p q) (erfc-scaled a))
+	    (setf z (exp (* a (- a)))
+		  z (/ (* z p)
+		       q))
+	    (if (>= x 0)
+		z
+		(- 2 z))))))
 
 
