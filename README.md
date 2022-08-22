@@ -88,30 +88,58 @@ To get a local copy up and running follow these steps:
 ### Prerequisites
 
 An ANSI Common Lisp implementation. Developed and tested with
-[SBCL](https://www.sbcl.org/) and
-[CCL](https://github.com/Clozure/ccl).
+[SBCL](https://www.sbcl.org/).
 
-### Quicklisp Installation
+### Installation
+
+#### Automated Installation
+
+If you have [Quicklisp](https://www.quicklisp.org/beta/) installed,
+you can load `special-functions` and all of its dependencies with:
 
 ```lisp
 (ql:quickload :special-functions)
 ```
 
-### Manual Installation
 
-1. Clone the repository
-   ```sh
-   cd ~/quicklisp/local-projects &&
-   git clone https://github.com/Lisp-Stat/special-functions.git
-   ```
+#### Manual Installation
+To make the system accessible to [ASDF](https://common-lisp.net/project/asdf/) (a build facility, similar to `make` in the C world), clone the repository in a directory ASDF knows about.  By default the `common-lisp` directory in your home directory is known. Create this if it doesn't already exist and then:
+
+1. Clone the repositories
+```sh
+cd ~/common-lisp && \
+git clone https://github.com/Lisp-Stat/special-functions.git && \
+git clone https://github.com/Lisp-Stat/numerical-utilities.git && \
+git clone https://github.com/Shinmera/float-features.git
+```
 2. Reset the ASDF source-registry to find the new system (from the REPL)
    ```lisp
    (asdf:clear-source-registry)
    ```
 3. Load the system
    ```lisp
-   (ql:quickload :special-functions)
+   (asdf:load-system :lisp-stat)
    ```
+
+If you have installed the slime ASDF extensions, you can invoke this
+with a comma (',') from the slime REPL.
+
+#### Getting dependencies
+
+To get the third party systems that these system may depend on, you can use a dependency manager, such as [Quicklisp](https://www.quicklisp.org/beta/) or [CLPM](https://www.clpm.dev/) Once installed, get the dependencies with either of:
+
+```lisp
+(clpm-client:sync :sources "clpi") ;sources may vary
+```
+
+```lisp
+(ql:quickload :special-functions)
+```
+
+You need do this only once. After obtaining the dependencies, you can
+load the system with `ASDF` as described above without first syncing
+sources.
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage

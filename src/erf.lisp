@@ -1,6 +1,6 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: SPECFUN -*-
 ;;; Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
-;;; Copyright (c) 2019-2020 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2019-2022 by Symbolics Pte. Ltd. All rights reserved.
 (in-package #:special-functions)
 
 ;;; Double-float error and related functions.
@@ -242,17 +242,23 @@
 (defun inverse-erfc (x)
   "Return the inverse function of erfc: (erfc (inverse-erfc x)) = x, 0 < x < 2"
   (declare (double-float x))
-  (cond ((float-nan-p x) x)
+  (cond ((float-nan-p x) (signal 'floating-point-invalid-operation))
 	((or (< x 0) ; Need to sort out how to handle NaN.
 	     (> x 2)) (error "x must be in the range [0 2])"))
 	((= x 0) double-float-positive-infinity)
 	((= x 2) double-float-negative-infinity)
 	((> x 1) (let* ((q (- 2 x))
-			(p (- 1 q)))
-		   (- (inverse-error p q))))
+			(p (- 1 q))
+			(ans (- (inverse-error p q))))
+		   (if (float-nan-p ans)
+		       (signal 'floating-point-invalid-operation)
+		       ans)))
 	(t (let* ((p (- 1 x))
-		  (q x))
-	     (inverse-error p q)))))
+		  (q x)
+		  (ans (inverse-error p q)))
+		   (if (float-nan-p ans)
+		       (signal 'floating-point-invalid-operation)
+		       ans)))))
 
 
 

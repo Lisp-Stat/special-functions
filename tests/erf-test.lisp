@@ -1,5 +1,5 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: SPECIAL-FUNCTIONS-TESTS -*-
-;;; Copyright (c) 2020 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2020-2022 by Symbolics Pte. Ltd. All rights reserved.
 (in-package #:special-functions-tests)
 
 (def-suite erf
@@ -112,18 +112,13 @@
 
 
 ;;; The values in this test are so small that, at double-float
-;;; precision, they cause inverse-erf to return ±∞. Boost only runs
-;;; this test using C long-doubles and here we just check that an
-;;; error is signaled.
-#-allegro
+;;; precision, they cause inverse-erf to return ±∞ or NaNs.  Boost
+;;; only runs this test using C long-doubles, and has fixtures for
+;;; handling NaNs.  When we have a way to handle long-doubles,
+;;; re-enable this test.
+#+nil
 (test erfc-inverse-small
-  :description "Test inverse error function from near 0 to 1 "
-  (signals floating-point-invalid-operation
-    (test-fn (select erfc-inverse-small-data t 1)
-			 #'(lambda (i params)
-			     (specfun:inverse-erfc (aref (car params) i)))
-			 (select erfc-inverse-small-data t 0)))
-  #+nil
+  :description "Test inverse error function from near 0 to 1"
   (let ((result (test-fn (select erfc-inverse-small-data t 1)
 			 #'(lambda (i params)
 			     (specfun:inverse-erfc (aref (car params) i)))
