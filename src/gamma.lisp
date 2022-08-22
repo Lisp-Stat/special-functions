@@ -3,7 +3,6 @@
 (in-package #:special-functions)
 
 (defconstant maxgamd 171.62437695630272d0 "Maximum argument for gamma")
-(defconstant tiny 1d-300)
 
 (defun stirling (x)
   "Return (gamma x) for x > 13"
