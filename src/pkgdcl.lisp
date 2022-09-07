@@ -2,7 +2,9 @@
 ;;; Copyright (c) 2020-2022 by Symbolics Pte. Ltd. All rights reserved.
 
 (uiop:define-package #:special-functions
-    (:use #:cl #:let-plus
+    (:use #:cl
+	  #:alexandria+
+	  #:let-plus
 	  #:num-utils.polynomial	; polynomial evaluation
 	  #:num-utils.arithmetic)
   (:nicknames #:spfn #:specfun)
