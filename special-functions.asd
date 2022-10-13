@@ -14,7 +14,7 @@
   :bug-tracker "https://github.com/Lisp-Stat/special-functions/issues"
 
   :serial      t
-  :depends-on  (:num-utils :float-features :let-plus)
+  :depends-on  (:num-utils :float-features :let-plus :alexandria+)
   :pathname    "src"
   :components ((:file #:pkgdcl)
 	       (:file #:utils)
